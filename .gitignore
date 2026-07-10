@@ -1,5 +1,5 @@
 # Large files
-*.pbix
+*.csv
 
 # Python
 __pycache__/
