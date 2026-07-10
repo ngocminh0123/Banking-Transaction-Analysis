@@ -51,7 +51,7 @@ Ground-truth fraud labels for supervised learning (1 = fraudulent, 0 = legitimat
 
 ## 🛠️ Technologies & Tools
 
-* **Big Data Processing**: PySpark (SQL, ML, MLlib)
+* **Big Data Processing**: PySpark (ML, MLlib)
 * **Data Analysis**: Pandas, NumPy
 * **Visualization**: Matplotlib, Seaborn
 * **Statistical Analysis**: SciPy, Statsmodels
