@@ -1,0 +1,24 @@
+# Banking Transaction Analysis - Python Dependencies
+
+# Data Processing & Analysis
+pandas>=1.5.0
+numpy>=1.23.0
+
+# Visualization
+matplotlib>=3.6.0
+seaborn>=0.12.0
+
+# Statistical Analysis
+scipy>=1.9.0
+statsmodels>=0.14.0
+
+# Machine Learning (PySpark MLlib is pre-installed in Databricks)
+# If running outside Databricks, uncomment:
+# pyspark>=3.3.0
+
+# Additional utilities
+scikit-learn>=1.2.0
+
+# Jupyter (for local development)
+# notebook>=6.5.0
+# ipykernel>=6.19.0
