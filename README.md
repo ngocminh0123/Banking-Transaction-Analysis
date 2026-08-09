@@ -1,4 +1,4 @@
-# 🏦 Supervised Fraud Detection in Banking Transactions 🛡️
+# 🏦 Fraud Detection in Banking Transactions 🛡️
 
 **Notebook:** `banking_transaction_analytics.ipynb`  
 **Dashboard:** `banking_transaction_dashboard.pbix`  
