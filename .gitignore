@@ -1,27 +1,14 @@
-# Large files
-*.csv
+# Environment variables
+.env
 
-# Python
-__pycache__/
-*.py[cod]
-*$py.class
-*.so
-.Python
+# Power BI files
+*.pbix
 
-# Jupyter Notebook
-.ipynb_checkpoints
+# Dashboard files
+Dashboards/
 
-# Virtual environments
-venv/
-env/
-ENV/
+# Data files
+Data/
 
-# IDE
-.vscode/
-.idea/
-*.swp
-*.swo
-
-# OS
-.DS_Store
-Thumbs.db
+# Python virtual environment
+bta-venv/
