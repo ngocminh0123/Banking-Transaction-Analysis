@@ -95,17 +95,18 @@ Dự án tập trung phân tích dữ liệu giao dịch nhằm:
 
 ```mermaid
 flowchart LR
-    A["<b>NGUỒN DỮ LIỆU</b><br/><br/>• Transactions<br/>• Users<br/>• Cards<br/>• Fraud Labels"]
 
-    B["<b>TIỀN XỬ LÝ DỮ LIỆU</b><br/><br/>• Làm sạch dữ liệu<br/>• Tích hợp dữ liệu<br/>• Feature Engineering"]
+    A["<b>NGUỒN DỮ LIỆU</b><br><br>&bull; Transactions<br>&bull; Users<br>&bull; Cards<br>&bull; Fraud Labels"]
 
-    C["<b>PHÂN TÍCH KHÁM PHÁ DỮ LIỆU</b><br/><br/>• Phân phối đặc trưng<br/>• Phân tích tỷ lệ gian lận<br/>• Phân khúc RFM<br/>• Phân tích sản phẩm<br/>• Phân tích tương quan"]
+    B["<b>TIỀN XỬ LÝ DỮ LIỆU</b><br><br>&bull; Làm sạch dữ liệu<br>&bull; Tích hợp dữ liệu<br>&bull; Feature Engineering"]
 
-    D["<b>HUẤN LUYỆN MÔ HÌNH</b><br/><br/>• Train-Test Split: 80:20<br/>• Logistic Regression<br/>• Random Forest<br/>• GBTClassifier"]
+    C["<b>PHÂN TÍCH KHÁM PHÁ DỮ LIỆU</b><br><br>&bull; Phân phối đặc trưng<br>&bull; Phân tích tỷ lệ gian lận<br>&bull; Phân khúc RFM<br>&bull; Phân tích sản phẩm<br>&bull; Phân tích tương quan"]
 
-    E["<b>ĐÁNH GIÁ MÔ HÌNH</b><br/><br/>• AUC / PR AUC<br/>• Precision / Recall<br/>• F1-Score<br/>• Confusion Matrix"]
+    D["<b>HUẤN LUYỆN MÔ HÌNH</b><br><br>&bull; Train-Test Split: 80:20<br>&bull; Logistic Regression<br>&bull; Random Forest<br>&bull; GBTClassifier"]
 
-    F["<b>POWER BI DASHBOARD</b><br/><br/>• Tổng quan giao dịch<br/>• Hành vi khách hàng<br/>• Phân tích RFM<br/>• Phân tích gian lận"]
+    E["<b>ĐÁNH GIÁ MÔ HÌNH</b><br><br>&bull; AUC / PR AUC<br>&bull; Precision / Recall<br>&bull; F1-Score<br>&bull; Confusion Matrix"]
+
+    F["<b>POWER BI DASHBOARD</b><br><br>&bull; Tổng quan giao dịch<br>&bull; Hành vi khách hàng<br>&bull; Phân tích RFM<br>&bull; Phân tích gian lận"]
 
     G["<b>BUSINESS INSIGHTS</b>"]
 

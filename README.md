@@ -98,17 +98,18 @@ The objective is to analyze transactional data to:
 
 ```mermaid
 flowchart LR
-    A["<b>DATA SOURCES</b><br/><br/>• Transactions<br/>• Users<br/>• Cards<br/>• Fraud Labels"]
 
-    B["<b>DATA PREPROCESSING</b><br/><br/>• Data Cleaning<br/>• Data Integration<br/>• Feature Engineering"]
+    A["<b>DATA SOURCES</b><br><br>&bull; Transactions<br>&bull; Users<br>&bull; Cards<br>&bull; Fraud Labels"]
 
-    C["<b>EXPLORATORY DATA ANALYSIS</b><br/><br/>• Feature Distributions<br/>• Fraud Rate Analysis<br/>• RFM Segmentation<br/>• Product Analysis<br/>• Correlation Analysis"]
+    B["<b>DATA PREPROCESSING</b><br><br>&bull; Data Cleaning<br>&bull; Data Integration<br>&bull; Feature Engineering"]
 
-    D["<b>MODEL TRAINING</b><br/><br/>• Train-Test Split: 80:20<br/>• Logistic Regression<br/>• Random Forest<br/>• GBTClassifier"]
+    C["<b>EXPLORATORY DATA ANALYSIS</b><br><br>&bull; Feature Distributions<br>&bull; Fraud Rate Analysis<br>&bull; RFM Segmentation<br>&bull; Product Analysis<br>&bull; Correlation Analysis"]
 
-    E["<b>MODEL EVALUATION</b><br/><br/>• AUC / PR AUC<br/>• Precision / Recall<br/>• F1-Score<br/>• Confusion Matrix"]
+    D["<b>MODEL TRAINING</b><br><br>&bull; Train-Test Split: 80:20<br>&bull; Logistic Regression<br>&bull; Random Forest<br>&bull; GBTClassifier"]
 
-    F["<b>POWER BI DASHBOARD</b><br/><br/>• Transaction Overview<br/>• Customer Behavior<br/>• RFM Analysis<br/>• Fraud Analysis"]
+    E["<b>MODEL EVALUATION</b><br><br>&bull; AUC / PR AUC<br>&bull; Precision / Recall<br>&bull; F1-Score<br>&bull; Confusion Matrix"]
+
+    F["<b>POWER BI DASHBOARD</b><br><br>&bull; Transaction Overview<br>&bull; Customer Behavior<br>&bull; RFM Analysis<br>&bull; Fraud Analysis"]
 
     G["<b>BUSINESS INSIGHTS</b>"]
 
