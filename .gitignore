@@ -4,9 +4,6 @@
 # Power BI files
 *.pbix
 
-# Dashboard files
-Dashboards/
-
 # Data files
 Data/
 
