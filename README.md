@@ -99,26 +99,56 @@ The objective is to analyze transactional data to:
 ```mermaid
 flowchart LR
 
-    A["<b>DATA SOURCES</b><br><br>&bull; Transactions<br>&bull; Users<br>&bull; Cards<br>&bull; Fraud Labels"]
+A["<b>DATA SOURCES</b>
 
-    B["<b>DATA PREPROCESSING</b><br><br>&bull; Data Cleaning<br>&bull; Data Integration<br>&bull; Feature Engineering"]
+• Transactions
+• Users
+• Cards
+• Fraud Labels"]
 
-    C["<b>EXPLORATORY DATA ANALYSIS</b><br><br>&bull; Feature Distributions<br>&bull; Fraud Rate Analysis<br>&bull; RFM Segmentation<br>&bull; Product Analysis<br>&bull; Correlation Analysis"]
+B["<b>DATA PREPROCESSING</b>
 
-    D["<b>MODEL TRAINING</b><br><br>&bull; Train-Test Split: 80:20<br>&bull; Logistic Regression<br>&bull; Random Forest<br>&bull; GBTClassifier"]
+• Data Cleaning
+• Data Integration
+• Feature Engineering"]
 
-    E["<b>MODEL EVALUATION</b><br><br>&bull; AUC / PR AUC<br>&bull; Precision / Recall<br>&bull; F1-Score<br>&bull; Confusion Matrix"]
+C["<b>EXPLORATORY DATA ANALYSIS</b>
 
-    F["<b>POWER BI DASHBOARD</b><br><br>&bull; Transaction Overview<br>&bull; Customer Behavior<br>&bull; RFM Analysis<br>&bull; Fraud Analysis"]
+• Feature Distributions
+• Fraud Rate Analysis
+• RFM Segmentation
+• Product Analysis
+• Correlation Analysis"]
 
-    G["<b>BUSINESS INSIGHTS</b>"]
+D["<b>MODEL TRAINING</b>
 
-    H["<b>RECOMMENDATIONS</b>"]
+• Train-Test Split: 80:20
+• Logistic Regression
+• Random Forest
+• GBTClassifier"]
 
-    A --> B --> C
-    C --> D --> E --> G
-    C --> F --> G
-    G --> H
+E["<b>MODEL EVALUATION</b>
+
+• AUC / PR AUC
+• Precision / Recall
+• F1-Score
+• Confusion Matrix"]
+
+F["<b>POWER BI DASHBOARD</b>
+
+• Transaction Overview
+• Customer Behavior
+• RFM Analysis
+• Fraud Analysis"]
+
+G["<b>BUSINESS INSIGHTS</b>"]
+
+H["<b>RECOMMENDATIONS</b>"]
+
+A --> B --> C
+C --> D --> E --> G
+C --> F --> G
+G --> H
 ``` 
 
 ---
