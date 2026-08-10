@@ -190,7 +190,7 @@ The Power BI dashboard provides an interactive view of transaction activity, cus
 
 ### **Dashboard 1 — Overview**
 
-![Overview Dashboard](Dashboards\Overview.png)
+![Overview Dashboard](Dashboards/Overview.png)
 
 #### **Transaction & Market**
 
@@ -219,7 +219,7 @@ The dataset represents a predominantly **retail-oriented customer base**, with d
 
 ### **Dashboard 2 — Customer Behavior**
 
-![Customer Behavior Dashboard](Dashboards\Customer_Behavior.png)
+![Customer Behavior Dashboard](Dashboards/Customer_Behavior.png)
 
 * **Inflow transactions account for approximately 95% of transaction value**, indicating a strong concentration of incoming transaction activity.
 * Customers aged **46+ account for nearly half of transaction activity**, while the 26–35 age group represents the smallest share among available age groups.
@@ -234,7 +234,7 @@ The customer base is predominantly **middle-aged and older**, with transaction a
 
 ### **Dashboard 3 — RFM Analysis**
 
-![RFM Analysis Dashboard](Dashboards\RFM_Analysis.png)
+![RFM Analysis Dashboard](Dashboards/RFM_Analysis.png)
 
 RFM analysis evaluates customers across three dimensions:
 
@@ -263,7 +263,7 @@ RFM segmentation provides a behavioral view of the customer base, helping identi
 
 ### **Dashboard 4 — Fraud Analysis**
 
-![Fraud Analysis Dashboard](Dashboards\Fraud_Analysis.png)
+![Fraud Analysis Dashboard](Dashboards/Fraud_Analysis.png)
 
 * Fraud rate increases as **transaction amount increases**, particularly for transactions above **$500**, despite their relatively low transaction volume.
 * Customers with annual income between **$100–$1,000** show the highest fraud rate among income groups, while also accounting for relatively few transactions.
