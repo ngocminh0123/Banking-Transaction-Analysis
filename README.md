@@ -1,4 +1,4 @@
-# 🏦 Fraud Detection in Banking Transactions 🛡️
+# 🏦 Fraud Detection in Banking Transactions
 
 **Notebook:** `banking_transaction_analytics.ipynb`  
 **Dashboard:** `banking_transaction_dashboard.pbix`  
@@ -7,7 +7,7 @@
 
 ---
 
-## 🧭 Project Overview
+## 📊 Project Overview
 
 Fraud detection is a critical challenge in the financial industry, where traditional rule-based systems struggle to capture complex fraud patterns in massive transaction volumes.
 
@@ -91,7 +91,7 @@ The objective is to analyze transactional data to:
 
 ---
 
-## 🔬 Methodology
+## ⚙️ Methodology
 
 ### **1. Data Preprocessing**
 
@@ -122,7 +122,7 @@ The objective is to analyze transactional data to:
 
 ---
 
-## 📊 Model Performance Comparison
+## 📈 Model Performance Comparison
 
 ### 🏆 Overall Results
 
