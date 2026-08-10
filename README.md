@@ -226,7 +226,7 @@ The dataset represents a predominantly **retail-oriented customer base**, with d
 * No transaction records are available for customers under 26 in the dataset.
 * Transaction activity is concentrated between **06:00 and 16:00**, gradually declining during the evening and remaining relatively low between 00:00 and 05:00.
 
-#### **Key Takeaway**
+#### **Key Takeaway** 
 
 The customer base is predominantly **middle-aged and older**, with transaction activity concentrated during daytime hours and a strong concentration of incoming transaction value.
 
