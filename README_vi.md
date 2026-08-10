@@ -96,56 +96,56 @@ Dự án tập trung phân tích dữ liệu giao dịch nhằm:
 ```mermaid
 flowchart LR
 
-    A["**NGUỒN DỮ LIỆU**
+A["<b>NGUỒN DỮ LIỆU</b>
 
-    • Transactions
-    • Users
-    • Cards
-    • Fraud Labels"]
+• Transactions
+• Users
+• Cards
+• Fraud Labels"]
 
-    B["**TIỀN XỬ LÝ DỮ LIỆU**
+B["<b>TIỀN XỬ LÝ DỮ LIỆU</b>
 
-    • Làm sạch dữ liệu
-    • Tích hợp dữ liệu
-    • Feature Engineering"]
+• Làm sạch dữ liệu
+• Tích hợp dữ liệu
+• Feature Engineering"]
 
-    C["**PHÂN TÍCH KHÁM PHÁ DỮ LIỆU**
+C["<b>PHÂN TÍCH KHÁM PHÁ DỮ LIỆU</b>
 
-    • Phân phối đặc trưng
-    • Phân tích tỷ lệ gian lận
-    • Phân khúc RFM
-    • Phân tích sản phẩm
-    • Phân tích tương quan"]
+• Phân phối đặc trưng
+• Phân tích tỷ lệ gian lận
+• Phân khúc RFM
+• Phân tích sản phẩm
+• Phân tích tương quan"]
 
-    D["**HUẤN LUYỆN MÔ HÌNH**
+D["<b>HUẤN LUYỆN MÔ HÌNH</b>
 
-    • Train-Test Split: 80:20
-    • Logistic Regression
-    • Random Forest
-    • GBTClassifier"]
+• Train-Test Split: 80:20
+• Logistic Regression
+• Random Forest
+• GBTClassifier"]
 
-    E["**ĐÁNH GIÁ MÔ HÌNH**
+E["<b>ĐÁNH GIÁ MÔ HÌNH</b>
 
-    • AUC / PR AUC
-    • Precision / Recall
-    • F1-Score
-    • Confusion Matrix"]
+• AUC / PR AUC
+• Precision / Recall
+• F1-Score
+• Confusion Matrix"]
 
-    F["**POWER BI DASHBOARD**
+F["<b>POWER BI DASHBOARD</b>
 
-    • Tổng quan giao dịch
-    • Hành vi khách hàng
-    • Phân tích RFM
-    • Phân tích gian lận"]
+• Tổng quan giao dịch
+• Hành vi khách hàng
+• Phân tích RFM
+• Phân tích gian lận"]
 
-    G["**BUSINESS INSIGHTS**"]
+G["<b>BUSINESS INSIGHTS</b>"]
 
-    H["**KHUYẾN NGHỊ**"]
+H["<b>KHUYẾN NGHỊ</b>"]
 
-    A --> B --> C
-    C --> D --> E --> G
-    C --> F --> G
-    G --> H
+A --> B --> C
+C --> D --> E --> G
+C --> F --> G
+G --> H
 ```
 
 ---
