@@ -174,10 +174,10 @@ The objective is to analyze transactional data to:
 ### 🎯 Trade-off Analysis
 
 ```
-                    Fraud Detection   False Alarms   Overall Quality
-Logistic Regression:      ★☆☆☆☆             ★★☆☆☆      ★★☆☆☆ (Weak Baseline)
-Random Forest:            ★★☆☆☆             ★★★★★      ★★★☆☆ (Highest Precision)
-GBTClassifier:            ★★★★☆             ★★★★☆      ★★★★★ (Best Overall)
+                      Fraud Detection       False Alarms     Overall Quality
+Logistic Regression:      ★☆☆☆☆            ★★☆☆☆           ★★☆☆☆ (Weak Baseline)
+Random Forest:            ★★☆☆☆            ★★★★★           ★★★☆☆ (Highest Precision)
+GBTClassifier:            ★★★★☆            ★★★★☆           ★★★★★ (Best Overall)
 ```
 
 ---
