@@ -1,5 +1,8 @@
 # 🏦 Fraud Detection in Banking Transactions
 
+🇻🇳 *Read this in Vietnamese: [README tiếng Việt](README_vi.md)*
+
+
 **Notebook:** `banking_transaction_analytics.ipynb`  
 **Dashboard:** `banking_transaction_dashboard.pbix`  
 **Author:** Nguyễn Thị Ngọc Minh    
@@ -91,34 +94,31 @@ The objective is to analyze transactional data to:
 
 ---
 
-## ⚙️ Methodology
+## 🗺️ Project Workflow
 
-### **1. Data Preprocessing**
+```mermaid
+flowchart LR
+    A["<b>DATA SOURCES</b><br/><br/>• Transactions<br/>• Users<br/>• Cards<br/>• Fraud Labels"]
 
-* **Data Cleaning:** Handled missing values, removed duplicates, and corrected data types across all tables.
-* **Data Integration:** Merged the transactions, users, cards, and fraud labels tables into a unified dataset.
-* **Feature Engineering:** Created transaction flow type from transaction amounts and added temporal features including card expiry date, hour, weekday, weekend indicator, month, and year.
+    B["<b>DATA PREPROCESSING</b><br/><br/>• Data Cleaning<br/>• Data Integration<br/>• Feature Engineering"]
 
-### **2. Exploratory Data Analysis (EDA)**
+    C["<b>EXPLORATORY DATA ANALYSIS</b><br/><br/>• Feature Distributions<br/>• Fraud Rate Analysis<br/>• RFM Segmentation<br/>• Product Analysis<br/>• Correlation Analysis"]
 
-* Categorical and Numerical feature distributions analysis
-* Fraud Rate Analysis by time, card information, transaction amount, and income
-* Customer segment analysis (RFM)
-* Product Performance Analysis by Transaction Amount and Count
-* Correlation analysis and feature relationships
+    D["<b>MODEL TRAINING</b><br/><br/>• Train-Test Split: 80:20<br/>• Logistic Regression<br/>• Random Forest<br/>• GBTClassifier"]
 
-### **3. Model Training & Evaluation**
+    E["<b>MODEL EVALUATION</b><br/><br/>• AUC / PR AUC<br/>• Precision / Recall<br/>• F1-Score<br/>• Confusion Matrix"]
 
-* **Train-Test Split:** 80:20 ratio
-* **Models Evaluated:**
-  * Logistic Regression
-  * Random Forest
-  * GBTClassifier 
-* **Evaluation Metrics:**
-  * AUC (Area Under ROC Curve)
-  * PR AUC (Precision-Recall AUC)
-  * Accuracy, Precision, Recall, F1-Score
-  * Confusion Matrix analysis
+    F["<b>POWER BI DASHBOARD</b><br/><br/>• Transaction Overview<br/>• Customer Behavior<br/>• RFM Analysis<br/>• Fraud Analysis"]
+
+    G["<b>BUSINESS INSIGHTS</b>"]
+
+    H["<b>RECOMMENDATIONS</b>"]
+
+    A --> B --> C
+    C --> D --> E --> G
+    C --> F --> G
+    G --> H
+``` 
 
 ---
 
