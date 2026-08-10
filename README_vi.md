@@ -96,21 +96,51 @@ Dự án tập trung phân tích dữ liệu giao dịch nhằm:
 ```mermaid
 flowchart LR
 
-    A["<b>NGUỒN DỮ LIỆU</b><br><br>&bull; Transactions<br>&bull; Users<br>&bull; Cards<br>&bull; Fraud Labels"]
+    A["**NGUỒN DỮ LIỆU**
 
-    B["<b>TIỀN XỬ LÝ DỮ LIỆU</b><br><br>&bull; Làm sạch dữ liệu<br>&bull; Tích hợp dữ liệu<br>&bull; Feature Engineering"]
+    • Transactions
+    • Users
+    • Cards
+    • Fraud Labels"]
 
-    C["<b>PHÂN TÍCH KHÁM PHÁ DỮ LIỆU</b><br><br>&bull; Phân phối đặc trưng<br>&bull; Phân tích tỷ lệ gian lận<br>&bull; Phân khúc RFM<br>&bull; Phân tích sản phẩm<br>&bull; Phân tích tương quan"]
+    B["**TIỀN XỬ LÝ DỮ LIỆU**
 
-    D["<b>HUẤN LUYỆN MÔ HÌNH</b><br><br>&bull; Train-Test Split: 80:20<br>&bull; Logistic Regression<br>&bull; Random Forest<br>&bull; GBTClassifier"]
+    • Làm sạch dữ liệu
+    • Tích hợp dữ liệu
+    • Feature Engineering"]
 
-    E["<b>ĐÁNH GIÁ MÔ HÌNH</b><br><br>&bull; AUC / PR AUC<br>&bull; Precision / Recall<br>&bull; F1-Score<br>&bull; Confusion Matrix"]
+    C["**PHÂN TÍCH KHÁM PHÁ DỮ LIỆU**
 
-    F["<b>POWER BI DASHBOARD</b><br><br>&bull; Tổng quan giao dịch<br>&bull; Hành vi khách hàng<br>&bull; Phân tích RFM<br>&bull; Phân tích gian lận"]
+    • Phân phối đặc trưng
+    • Phân tích tỷ lệ gian lận
+    • Phân khúc RFM
+    • Phân tích sản phẩm
+    • Phân tích tương quan"]
 
-    G["<b>BUSINESS INSIGHTS</b>"]
+    D["**HUẤN LUYỆN MÔ HÌNH**
 
-    H["<b>KHUYẾN NGHỊ</b>"]
+    • Train-Test Split: 80:20
+    • Logistic Regression
+    • Random Forest
+    • GBTClassifier"]
+
+    E["**ĐÁNH GIÁ MÔ HÌNH**
+
+    • AUC / PR AUC
+    • Precision / Recall
+    • F1-Score
+    • Confusion Matrix"]
+
+    F["**POWER BI DASHBOARD**
+
+    • Tổng quan giao dịch
+    • Hành vi khách hàng
+    • Phân tích RFM
+    • Phân tích gian lận"]
+
+    G["**BUSINESS INSIGHTS**"]
+
+    H["**KHUYẾN NGHỊ**"]
 
     A --> B --> C
     C --> D --> E --> G
