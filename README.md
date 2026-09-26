@@ -1,133 +1,146 @@
-# 🏦 Fraud Detection in Banking Transactions
+# Đánh giá rủi ro gian lận trong giao dịch ngân hàng
 
-🇻🇳 *Read this in Vietnamese: [README tiếng Việt](README_vi.md)*
-
-
-**Notebook:** `banking_transaction_analytics.ipynb`  
-**Dashboard:** `banking_transaction_dashboard.pbix`  
-**Author:** Nguyễn Thị Ngọc Minh    
-**Project Type:** Power BI + PySpark ML  
+[English](README_en.md) | **Tiếng Việt**
 
 ---
 
-## 📊 Project Overview
+## 1. Bối cảnh kinh doanh
 
-Fraud detection is a critical challenge in the financial industry, where traditional rule-based systems struggle to capture complex fraud patterns in massive transaction volumes.
+Gian lận giao dịch là một trong những rủi ro trọng yếu đối với ngân hàng do có thể gây tổn thất tài chính, ảnh hưởng đến khách hàng, làm gia tăng chi phí xử lý và tạo ra rủi ro uy tín cũng như rủi ro tuân thủ. Khi quy mô và tốc độ giao dịch ngày càng lớn, phương pháp giám sát chỉ dựa trên các quy tắc cố định có thể không nhận diện đầy đủ những mẫu gian lận phức tạp hoặc thay đổi theo thời gian.
 
-This project leverages **supervised machine learning** to build and evaluate fraud detection models using PySpark ML on a large-scale banking dataset with labeled fraud cases.
+Trong bối cảnh đó, CRO giao cho Risk Analyst thực hiện dự án với bốn mục tiêu chính:
 
-**Dataset Source:** [Kaggle - Financial Transactions Dataset](https://www.kaggle.com/datasets/computingvictor/transactions-fraud-datasets)
-
-### 🎯 Objectives
-
-The objective is to analyze transactional data to:
-
-* Identify abnormal transaction patterns and suspicious financial behavior
-* Understand customer transaction behavior, spending patterns, and customer segmentation.
-* Analyze the most frequently used products and services in transactions.
-* Detect transaction anomalies and fraud risks using machine learning models
-* Generate actionable business insights for banking operations and risk management
-
-## 📂 Dataset Information
-
-* **Total Transactions:** 13,305,928
-* **Customers:** 2,000 unique clients
-* **Cards:** 6,146 card records
-* **Fraud Rate:** ~0.15% (highly imbalanced)
-* **Time Period:** 2010s decade
-
-### 🔑 Key Tables & Features
-
-#### **1. Transactions Data** (13.3M records)
-
-| Column         | Description                                      |
-| -------------- | ------------------------------------------------ |
-| id             | Unique transaction identifier                    |
-| date           | Transaction timestamp                            |
-| client_id      | Customer identifier                              |
-| card_id        | Card identifier                                  |
-| amount         | Transaction amount (USD)                         |
-| use_chip       | Whether chip authentication was used             |
-| merchant_id    | Merchant identifier                              |
-| merchant_city  | Merchant location (city)                         |
-| merchant_state | Merchant location (state)                        |
-| zip            | Merchant ZIP code                                |
-| mcc            | Merchant Category Code (business type)           |
-| errors         | Transaction error indicators                     |
-
-#### **2. Users Data** (2,000 customers)
-
-| Column              | Description                    |
-| ------------------- | ------------------------------ |
-| client_id           | Customer identifier            |
-| current_age         | Customer age                   |
-| retirement_age      | Expected retirement age        |
-| birth_year          | Year of birth                  |
-| gender              | Customer gender                |
-| latitude, longitude | Customer location              |
-| per_capita_income   | Income per capita              |
-| yearly_income       | Annual income                  |
-| total_debt          | Total outstanding debt         |
-| credit_score        | Credit score                   |
-| num_credit_cards    | Number of credit cards owned   |
-
-#### **3. Cards Data** (6,146 cards)
-
-| Column               | Description                           |
-| -------------------- | ------------------------------------- |
-| id                   | Card identifier                       |
-| client_id            | Owner customer identifier             |
-| card_brand           | Card brand (Visa, Mastercard, etc.)   |
-| card_type            | Card type (Credit, Debit)             |
-| has_chip             | Whether card has chip technology      |
-| credit_limit         | Card credit limit                     |
-| acct_open_date       | Account opening date                  |
-| year_pin_last_changed| Last PIN change year                  |
-| card_on_dark_web     | Whether card info leaked on dark web  |
-
-#### **4. Fraud Labels** (supervised targets)
-
-| Column   | Description                               |
-| -------- | ----------------------------------------- |
-| id       | Transaction identifier                    |
-| is_Fraud | Fraud label (True/False, ~0.15% positive) |
+1. Đánh giá tổng thể thực trạng gian lận, đồng thời xác định các xu hướng và mẫu hình gian lận trọng yếu.
+2. Xác định các nhóm khách hàng có rủi ro cao và phân tích gian lận theo từng phân khúc khách hàng.
+3. Xác định các sản phẩm và kênh giao dịch có mức độ rủi ro gian lận cao.
+4. Đánh giá các mô hình Machine Learning nhằm hỗ trợ dự báo và cải thiện khả năng phát hiện gian lận.
 
 ---
 
-## 🗺️ Project Workflow
+## 2. Các tệp chính trong dự án
+
+| Tệp / thư mục | Nội dung |
+| --- | --- |
+| [`README.md`](README.md) | Báo cáo dự án bằng tiếng Việt và là trang giới thiệu mặc định trên GitHub. |
+| [`README_en.md`](README_en.md) | Báo cáo dự án bằng tiếng Anh. |
+| [`banking_transaction_analytics.ipynb`](banking_transaction_analytics.ipynb) | Notebook Python/PySpark thực hiện làm sạch dữ liệu, phân tích khám phá, kiểm định, feature engineering và xây dựng mô hình Machine Learning. |
+| [`requirements.txt`](requirements.txt) | Danh sách thư viện Python cần thiết để chạy môi trường phân tích. |
+
+---
+
+## 3. Dữ liệu phân tích
+
+### 3.1. Quy mô dữ liệu
+
+| Chỉ tiêu | Quy mô |
+| --- | ---: |
+| Tổng số giao dịch ban đầu | 13,305,928 |
+| Hồ sơ khách hàng | 2,000 |
+| Hồ sơ thẻ | 6,146 |
+| Giao dịch có nhãn được sử dụng trong tập phân tích mô hình | Khoảng 8.91 triệu |
+| Tỷ lệ giao dịch gian lận | Khoảng 0.15% |
+| Giai đoạn quan sát | 2010–2019 |
+
+Tỷ lệ gian lận rất thấp so với tổng số giao dịch, cho thấy đây là bài toán phân loại mất cân bằng nghiêm trọng. Vì vậy, Accuracy không được sử dụng riêng lẻ để kết luận về chất lượng mô hình; các chỉ số PR-AUC, Precision, Recall và F1-score được xem xét đồng thời.
+
+### 3.2. Các bảng dữ liệu và đặc trưng chính
+
+#### 1. `transactions_data.csv` — Dữ liệu giao dịch (13.3 triệu bản ghi)
+
+| Cột | Mô tả |
+| --- | --- |
+| `id` | Mã giao dịch |
+| `date` | Thời gian giao dịch |
+| `client_id` | Mã khách hàng |
+| `card_id` | Mã thẻ |
+| `amount` | Giá trị giao dịch (USD) |
+| `use_chip` | Giao dịch có sử dụng xác thực bằng chip hay không |
+| `merchant_id` | Mã đơn vị bán hàng |
+| `merchant_city` | Địa điểm của đơn vị bán hàng (thành phố) |
+| `merchant_state` | Địa điểm của đơn vị bán hàng (bang) |
+| `zip` | Mã ZIP của đơn vị bán hàng |
+| `mcc` | Merchant Category Code (loại hình kinh doanh) |
+| `errors` | Thông tin lỗi giao dịch |
+
+#### 2. `users_data.csv` — Dữ liệu khách hàng (2,000 khách hàng)
+
+| Cột | Mô tả |
+| --- | --- |
+| `client_id` | Mã khách hàng |
+| `current_age` | Tuổi khách hàng |
+| `retirement_age` | Độ tuổi nghỉ hưu dự kiến |
+| `birth_year` | Năm sinh |
+| `gender` | Giới tính |
+| `latitude`, `longitude` | Vị trí khách hàng |
+| `per_capita_income` | Thu nhập bình quân đầu người |
+| `yearly_income` | Thu nhập hàng năm |
+| `total_debt` | Tổng dư nợ |
+| `credit_score` | Điểm tín dụng |
+| `num_credit_cards` | Số lượng thẻ tín dụng sở hữu |
+
+#### 3. `cards_data.csv` — Dữ liệu thẻ (6,146 thẻ)
+
+| Cột | Mô tả |
+| --- | --- |
+| `id` | Mã thẻ |
+| `client_id` | Mã khách hàng |
+| `card_brand` | Thương hiệu thẻ (Visa, Mastercard,...) |
+| `card_type` | Loại thẻ (Credit, Debit) |
+| `has_chip` | Thẻ có công nghệ chip hay không |
+| `credit_limit` | Hạn mức tín dụng |
+| `acct_open_date` | Ngày mở tài khoản |
+| `year_pin_last_changed` | Năm thay đổi PIN gần nhất |
+| `card_on_dark_web` | Thông tin thẻ có bị phát tán trên dark web hay không |
+
+#### 4. `train_fraud_labels.csv` — Nhãn gian lận
+
+| Cột | Mô tả |
+| --- | --- |
+| `id` | Mã giao dịch |
+| `is_Fraud` | Nhãn gian lận (True/False, khoảng 0.15% positive) |
+
+### 3.3. Nguồn dữ liệu
+
+- **Nguồn công khai:** [Kaggle – Financial Transactions Dataset](https://www.kaggle.com/datasets/computingvictor/transactions-fraud-datasets)
+- **Nền tảng xử lý:** Databricks và Apache Spark.
+- **Phạm vi sử dụng:** Phân tích, minh họa phương pháp và phát triển mô hình thử nghiệm.
+
+---
+
+## 4. Quy trình thực hiện dự án
 
 ```mermaid
 flowchart LR
 
-A["<b>DATA SOURCES</b>
+A["<b>NGUỒN DỮ LIỆU</b>
 
 • Transactions
 • Users
 • Cards
 • Fraud Labels"]
 
-B["<b>DATA PREPROCESSING</b>
+B["<b>TIỀN XỬ LÝ DỮ LIỆU</b>
 
-• Data Cleaning
-• Data Integration
+• Làm sạch dữ liệu
+• Tích hợp dữ liệu
 • Feature Engineering"]
 
-C["<b>EXPLORATORY DATA ANALYSIS</b>
+C["<b>PHÂN TÍCH KHÁM PHÁ DỮ LIỆU</b>
 
-• Feature Distributions
-• Fraud Rate Analysis
-• RFM Segmentation
-• Product Analysis
-• Correlation Analysis"]
+• Phân phối đặc trưng
+• Phân tích tỷ lệ gian lận
+• Phân khúc RFM
+• Phân tích sản phẩm
+• Phân tích tương quan"]
 
-D["<b>MODEL TRAINING</b>
+D["<b>HUẤN LUYỆN MÔ HÌNH</b>
 
 • Train-Test Split: 80:20
 • Logistic Regression
 • Random Forest
 • GBTClassifier"]
 
-E["<b>MODEL EVALUATION</b>
+E["<b>ĐÁNH GIÁ MÔ HÌNH</b>
 
 • AUC / PR AUC
 • Precision / Recall
@@ -136,287 +149,234 @@ E["<b>MODEL EVALUATION</b>
 
 F["<b>POWER BI DASHBOARD</b>
 
-• Transaction Overview
-• Customer Behavior
-• RFM Analysis
-• Fraud Analysis"]
+• Tổng quan giao dịch
+• Hành vi khách hàng
+• Phân tích RFM
+• Phân tích gian lận"]
 
 G["<b>BUSINESS INSIGHTS</b>"]
 
-H["<b>RECOMMENDATIONS</b>"]
+H["<b>KHUYẾN NGHỊ</b>"]
 
 A --> B --> C
 C --> D --> E --> G
 C --> F --> G
 G --> H
-``` 
-
----
-
-## 📈 Model Performance Comparison
-
-### 🏆 Overall Results
-
-| Model                   | AUC        | PR AUC     | Accuracy | Precision | Recall   | F1-Score |
-| ----------------------- | ---------- | ---------- | -------- | --------- | -------- | -------- |
-| **Logistic Regression** | 0.8444     | 0.0213     | 99.85%   | 28.97%    | 0.29%    | 0.58%    |
-| **Random Forest**       | 0.8934     | 0.0927     | 99.85%   | **98.91%**| 2.56%    | 5.00%    |
-| **GBTClassifier**       | **0.9427** | **0.2748** | **99.87%**| 94.54%    | **11.42%**| **20.38%**|
-
-### 🔍 Fraud Detection Performance
-
-| Model                   | Fraud Caught (TP) | Fraud Missed (FN) | False Alarms (FP) | Total Fraud |
-| ----------------------- | ----------------- | ----------------- | ----------------- | ----------- |
-| **Logistic Regression** | 31                | 10,581            | 76                | 10,612      |
-| **Random Forest**       | 272               | 10,340            | **3**             | 10,612      |
-| **GBTClassifier**       | **1,212**         | **9,400**         | 70                | 10,612      |
-
----
-
-## 💡 Key Insights
-
-### ✅ Model Strengths
-
-**GBTClassifier (Recommended Model)**
-* **Highest discriminative ability:** AUC 0.9427 indicates excellent ranking of fraud vs. legitimate transactions
-* **Best fraud detection:** Catches **1,212 out of 10,612 fraud cases** (11.42% recall)
-* **Highest PR AUC (0.2748):** Nearly **3× better** than Random Forest and **13× better** than Logistic Regression on imbalanced data
-* **High precision (94.54%):** 94 out of 100 flagged transactions are actually fraudulent
-* **Very low false positive rate (0.00098%):** Only 70 false alarms out of 7.1M legitimate transactions
-* **Captures complex patterns:** Sequential tree-building effectively learns non-linear fraud behaviors
-
-**Random Forest**
-* **Highest precision (98.91%):** Nearly perfect when flagging fraud
-* **Lowest false positives (3):** Minimal customer disruption
-* **Stable performance:** Ensemble approach reduces overfitting
-
-**Logistic Regression**
-* **Fast and interpretable:** Provides feature coefficients for business interpretation
-* **Good baseline:** AUC 0.8444 demonstrates reasonable ranking ability
-* **Regulatory compliance:** Model transparency supports explainability requirements
-
-### ⚠️ Critical Limitations
-
-* **All models exhibit low fraud recall** under default thresholds due to extreme class imbalance (~0.15% fraud)
-* **Logistic Regression fails to detect fraud effectively:** Only 0.29% recall makes it unsuitable for production
-* **Even best model (GBT) misses ~88% of fraud cases** without threshold optimization
-* **Accuracy is misleading:** 99.85% accuracy simply reflects the imbalanced class distribution
-
-### 🎯 Trade-off Analysis
-
-```
-                      Fraud Detection       False Alarms     Overall Quality
-Logistic Regression:      ★☆☆☆☆            ★★☆☆☆           ★★☆☆☆ (Weak Baseline)
-Random Forest:            ★★☆☆☆            ★★★★★           ★★★☆☆ (Highest Precision)
-GBTClassifier:            ★★★★☆            ★★★★☆           ★★★★★ (Best Overall)
 ```
 
----
+### 4.1. Chuẩn bị và xử lý dữ liệu
 
-## 📊 Power BI Dashboard
+- Kiểm tra cấu trúc, kiểu dữ liệu, giá trị thiếu và bản ghi trùng lặp.
+- Chuẩn hóa giá trị giao dịch và các trường định dạng tiền tệ.
+- Xử lý thông tin vị trí và lỗi giao dịch bị thiếu theo quy tắc của dự án.
+- Kết hợp dữ liệu giao dịch với hồ sơ khách hàng, hồ sơ thẻ và nhãn gian lận.
+- Xây dựng các biến về giờ, ngày, tháng, năm, nhóm tuổi, nhóm thu nhập, nhóm giá trị giao dịch và đặc điểm sản phẩm.
 
-The Power BI dashboard provides an interactive view of transaction activity, customer behavior, RFM segmentation, and fraud patterns across the U.S. banking transaction dataset from 2010–2019.
+### 4.2. Phân tích thực trạng
 
----
+Phân tích tập trung vào ba lớp thông tin:
 
-### **Dashboard 1 — Overview**
+1. **Quy mô hoạt động:** số lượng và giá trị giao dịch theo thời gian, khách hàng, sản phẩm và kênh.
+2. **Mức độ rủi ro:** số lượng và tỷ lệ gian lận trong từng phân khúc.
+3. **Ý nghĩa quản trị:** khu vực cần ưu tiên giám sát, tăng cường xác thực hoặc tiếp tục điều tra.
 
-![Overview Dashboard](Dashboards/Overview.png)
+### 4.3. Phân khúc khách hàng RFM
 
-#### **Transaction & Market**
+Khách hàng được đánh giá trên ba tiêu chí:
 
-* Transaction activity increased steadily from **2010 to 2016**, then remained relatively stable through 2019.
-* Transaction activity shows **seasonal fluctuations**, with a noticeable decline around February and alternating increases and decreases throughout the remaining months.
-* Transactions are mainly concentrated in the **Eastern and coastal regions of the U.S.**
+- **Recency:** mức độ gần đây của giao dịch.
+- **Frequency:** tần suất giao dịch.
+- **Monetary:** tổng giá trị giao dịch.
 
-#### **Product & Payment**
+Điểm RFM được sử dụng để phân nhóm khách hàng như Champions, Loyal, New Customers, Potential Loyalists, Need Attention, Cannot Lose Them và Lost Customers. Trong dự án này, RFM được sử dụng như một lớp phân khúc hành vi để hỗ trợ phân tích rủi ro, không thay thế hệ thống phân hạng rủi ro khách hàng của ngân hàng.
 
-* **Debit cards** account for the largest share of transaction volume and value, followed by credit and prepaid cards.
-* **Mastercard** has the highest transaction usage, followed by Visa, Amex, and Discover.
-* Approximately **11.97M of 13.31M transactions (~90%)** were made using chip-enabled cards.
-* From 2015 onward, **chip transactions became the dominant payment method**, replacing swipe transactions as the most frequently used channel.
+### 4.4. Xây dựng và đánh giá mô hình
 
-#### **Fraud Patterns by Payment Channel**
+Ba mô hình được lựa chọn để đại diện cho các mức độ phức tạp khác nhau:
 
-* **Online transactions account for approximately 86.73% of fraud cases**, followed by chip transactions at 10.23% and swipe transactions.
-* Chip transactions became the dominant payment method after 2015 and initially showed relatively lower fraud exposure.
-* However, fraud patterns within chip transactions changed over subsequent years, highlighting the need for **continuous monitoring rather than assuming a payment method remains consistently low-risk**.
+- **Logistic Regression:** mô hình nền, dễ diễn giải.
+- **Random Forest:** mô hình tập hợp cây, có khả năng mô hình hóa quan hệ phi tuyến.
+- **GBTClassifier:** mô hình boosting, tối ưu tuần tự các cây quyết định để cải thiện khả năng phân loại.
 
-#### **Key Takeaway**
-
-The dataset represents a predominantly **retail-oriented customer base**, with debit cards and small-value transactions accounting for most activity. **Chip payments became increasingly dominant after 2015**, reflecting a shift toward modern payment methods. However, **online transactions account for the majority of fraud cases (86.73%)**, making online payments a key area for fraud monitoring. The changing fraud patterns across payment channels also highlight the importance of **continuously monitoring payment security risks over time**.
-
----
-
-### **Dashboard 2 — Customer Behavior**
-
-![Customer Behavior Dashboard](Dashboards/Customer_Behavior.png)
-
-* **Inflow transactions account for approximately 95% of transaction value**, indicating a strong concentration of incoming transaction activity.
-* Customers aged **46+ account for nearly half of transaction activity**, while the 26–35 age group represents the smallest share among available age groups.
-* No transaction records are available for customers under 26 in the dataset.
-* Transaction activity is concentrated between **06:00 and 16:00**, gradually declining during the evening and remaining relatively low between 00:00 and 05:00.
-
-#### **Key Takeaway** 
-
-The customer base is predominantly **middle-aged and older**, with transaction activity concentrated during daytime hours and a strong concentration of incoming transaction value.
+Các mô hình được so sánh trên nhiều chỉ số để phản ánh đồng thời khả năng phân biệt, khả năng phát hiện gian lận và chi phí cảnh báo sai.
 
 ---
 
-### **Dashboard 3 — RFM Analysis**
+## 5. Kết quả phân tích thực trạng trên Power BI
 
-![RFM Analysis Dashboard](Dashboards/RFM_Analysis.png)
+Phần phân tích Power BI được trình bày theo ba dashboard chính, lần lượt đánh giá thực trạng gian lận tổng thể, rủi ro theo khách hàng và rủi ro theo sản phẩm hoặc kênh giao dịch.
 
-RFM analysis evaluates customers across three dimensions:
+### 5.1. Dashboard Overview — Thực trạng và khu vực rủi ro chính
 
-* **Recency:** How recently the customer made a transaction.
-* **Frequency:** How frequently the customer makes transactions.
-* **Monetary:** The total transaction value generated by the customer.
+![Dashboard tổng quan giao dịch và gian lận](Dashboards/Fraud_Overview.png)
 
-Each dimension is scored from **1 to 5**, with 5 representing stronger customer engagement or value.
+Dashboard Overview ghi nhận **13.31 triệu giao dịch**, **13,332 giao dịch gian lận**, tỷ lệ gian lận **0.150%** và tổng giá trị gian lận khoảng **USD 1.75 triệu** trong giai đoạn 2010–2019.
 
-Customers are grouped into three main categories:
+Các phát hiện chính:
 
-* **VIP Customers:** Champions, Loyal
-* **New Customers:** New Customers, Potential Loyalists, Promising
-* **At-Risk Customers:** Need Attention, Cannot Lose Them, Lost Customers
+- Số lượng giao dịch có xu hướng tăng trong giai đoạn đầu và duy trì ở mức tương đối ổn định trong các năm sau đó; tỷ lệ gian lận biến động mạnh hơn và đạt mức cao nhất vào năm **2016**.
+- Tỷ lệ gian lận tăng rõ rệt ở các giao dịch có giá trị lớn, đặc biệt từ **USD 2,000 trở lên**.
+- Nhóm khách hàng có thu nhập khoảng **USD 100–1,000** ghi nhận mức độ rủi ro cao hơn các nhóm thu nhập còn lại trong dữ liệu quan sát.
+- Gian lận tập trung nhiều trong khoảng **09:00–16:00**, đặc biệt vào Chủ nhật.
+- Phần lớn các trường hợp gian lận được ghi nhận tại khu vực **Bắc Mỹ**.
 
-The dashboard visualizes **customer distribution and transaction activity across segments**, helping identify high-value, newly acquired, and at-risk customer groups.
+**Đề xuất:** ngân hàng nên ưu tiên giám sát giao dịch giá trị cao và các khung thời gian có mức độ tập trung gian lận đáng chú ý. Các tín hiệu này cần được kết hợp với hồ sơ khách hàng, sản phẩm và kênh giao dịch thay vì sử dụng như điều kiện từ chối độc lập.
 
-It also provides **customer-level RFM scores** to support deeper analysis of individual customer behavior and value.
+### 5.2. Dashboard Customer Behavior — Nhóm khách hàng cần ưu tiên giám sát
 
-#### **Key Takeaway**
+![Dashboard phân tích hành vi và rủi ro gian lận theo khách hàng](Dashboards/Customer_Fraud_Behavior.png)
 
-RFM segmentation provides a behavioral view of the customer base, helping identify **high-value customers, new customers, and customers at risk of churn**. These insights can support **customer retention, re-engagement strategies, and prioritization of high-value customer groups**.
+Dashboard Customer Behavior phân tích **1,219 khách hàng có hoạt động trên tổng số 2,000 khách hàng**, đồng thời đối chiếu quy mô giao dịch và tỷ lệ gian lận theo phân khúc RFM, nhóm tuổi, thời điểm và giá trị giao dịch.
 
+Các phát hiện chính:
 
----
+- Nhóm khách hàng tiềm năng chiếm **42.49%** số khách hàng hoạt động, tiếp theo là nhóm VIP với **32.81%**, nhóm có nguy cơ với **16.65%** và các nhóm còn lại với **8.04%**.
+- **New Customers** có tỷ lệ gian lận cao nhất trong các phân khúc RFM, khoảng **0.31%**; Champions và Cannot Lose Them có tỷ lệ thấp nhất, khoảng **0.10%**.
+- Nhóm khách hàng từ **56 tuổi trở lên** ghi nhận tỷ lệ gian lận khoảng **0.17%**, cao hơn một số nhóm tuổi còn lại.
+- Hoạt động giao dịch chủ yếu diễn ra trong khoảng **06:00–16:00** và giảm xuống mức thấp vào ban đêm.
+- Các phân khúc New Customers, Loyal, Lost Customers và Promising ghi nhận tỷ lệ gian lận cao ở nhóm giao dịch trên **USD 2,000**.
 
-### **Dashboard 4 — Fraud Analysis**
+**Đề xuất:** khách hàng mới nên được tăng cường giám sát trong giai đoạn đầu của quan hệ khách hàng. Tuổi, thu nhập hoặc phân khúc RFM chỉ nên được sử dụng như tín hiệu bổ sung trong một cơ chế đánh giá đa yếu tố.
 
-![Fraud Analysis Dashboard](Dashboards/Fraud_Analysis.png)
+### 5.3. Dashboard Product Analysis — Sản phẩm và kênh giao dịch có rủi ro cao
 
-* Fraud rate increases as **transaction amount increases**, particularly for transactions above **$500**, despite their relatively low transaction volume.
-* Customers with annual income between **$100–$1,000** show the highest fraud rate among income groups, while also accounting for relatively few transactions.
-* **New Customers** have the highest fraud rate among RFM segments at approximately **0.31%**, while Champions show a lower fraud rate of around **0.10%**.
-* Customers aged **56+** have a fraud rate of approximately **0.17%** and represent nearly half of transaction activity.
-* Fraud is concentrated during the main transaction period of **06:00–16:00** and is relatively higher on **Sunday**.
-* Transactions above approximately **$1,000** represent an important high-risk area for additional monitoring.
+![Dashboard phân tích rủi ro theo sản phẩm và kênh giao dịch](Dashboards/Product_Analysis.png)
 
-#### **Key Takeaway**
+Dashboard Product Analysis phân tích **4,071 thẻ hoạt động trên tổng số 6,146 thẻ** và mức độ rủi ro theo loại thẻ, thương hiệu thẻ, phương thức giao dịch và số lượng thẻ khách hàng sở hữu.
 
-Fraud risk is associated with specific **transaction amounts, customer segments, payment channels, and transaction periods**. High-value transactions, online payments, new customers, and selected time periods should therefore receive greater attention in fraud monitoring and prevention strategies.
+Các phát hiện chính:
 
+- Thẻ Debit chiếm tỷ trọng lớn nhất trong danh mục, tiếp theo là Credit và Debit (Prepaid).
+- Debit (Prepaid) có tỷ lệ gian lận cao nhất giữa các loại thẻ, khoảng **0.22%**.
+- Mastercard là thương hiệu thẻ được sử dụng nhiều nhất, tiếp theo là Visa, Amex và Discover.
+- Discover có tỷ lệ gian lận cao nhất giữa các thương hiệu thẻ, khoảng **0.21%**.
+- Giao dịch Online có tỷ lệ gian lận **0.84%**, cao hơn giao dịch Chip (**0.10%**) và Swipe (**0.03%**), mặc dù có số lượng giao dịch thấp nhất trong ba phương thức.
+- Khách hàng sở hữu ba thẻ có tỷ lệ gian lận khoảng **0.19%**, cao hơn nhóm sở hữu một hoặc hai thẻ.
 
----
-
-## 🚀 Business Recommendations
-
-### **1. Strengthen Risk-Based Transaction Monitoring**
-
-* **Apply stricter verification for high-value transactions**, particularly transactions above **$500–$1,000**, where fraud rates are relatively higher.
-* **Strengthen monitoring of online transactions**, which account for **86.73% of identified fraud cases**, through stronger authentication and transaction-level risk assessment.
-* **Increase monitoring during high-risk periods**, particularly **06:00–16:00 and weekends, especially Sunday**.
-* Develop **risk-based transaction rules** combining transaction amount, payment channel, time, customer profile, and historical behavior rather than relying on a single fraud indicator.
-
-### **2. Strengthen New Customer & Account Monitoring**
-
-* **Enhance KYC and identity verification for new customers**, including personal information and biometric verification where applicable.
-* **Monitor newly opened accounts after activation** to identify unusual transaction patterns or activity inconsistent with the customer's expected behavior.
-* Pay additional attention to **low-income customers ($100–$1,000 annual income)** when transaction values or transaction behavior appear inconsistent with their historical profile.
-* Incorporate **RFM segments into fraud monitoring** to identify customers requiring additional review while avoiding unnecessary controls for consistently low-risk customers.
-
-### **3. Improve Fraud Detection Models**
-
-* **Optimize classification thresholds** using the Precision-Recall curve rather than relying solely on the default 0.5 threshold.
-* Apply **cost-sensitive learning** to place greater emphasis on missed fraud cases.
-* Explore **advanced imbalance-handling techniques**, such as SMOTE, ADASYN, or other resampling approaches.
-* Expand behavioral features, including **transaction velocity, spending deviation, and sequential transaction patterns**.
-* Perform **hyperparameter optimization and cross-validation** to improve model generalization.
-* Implement **SHAP or other explainability techniques** to identify the factors contributing to fraud predictions.
-
-### **4. Expected Business Impact**
-
-* **Reduce fraud exposure** by focusing monitoring resources on high-risk transactions, channels, time periods, and customer segments.
-* **Improve early identification of suspicious activity**, particularly for online and high-value transactions and newly opened accounts.
-* **Prioritize fraud investigations** using customer behavior and model-based risk scores.
-* **Reduce unnecessary customer friction** by applying additional verification selectively to higher-risk activities.
-* Establish a stronger foundation for **continuous fraud monitoring and future model improvement**.
+**Đề xuất:** giao dịch Online, thẻ trả trước và một số thương hiệu thẻ có mức độ rủi ro cao hơn cần được ưu tiên trong thiết kế rule và cơ chế xác thực bổ sung. Quyết định kiểm soát cần xem xét đồng thời tỷ lệ gian lận và quy mô giao dịch của từng nhóm.
 
 ---
 
-## 🛠️ Technical Stack
+## 6. Kết quả mô hình dự báo gian lận
 
-**Platform & Compute**
+Quy trình xử lý dữ liệu, feature engineering, huấn luyện và đánh giá mô hình được thực hiện trong notebook [`banking_transaction_analytics.ipynb`](banking_transaction_analytics.ipynb) bằng Python và PySpark ML. Trang Fraud Prediction Result trong Power BI tổng hợp các kết quả từ notebook thành góc nhìn quản trị, tập trung vào khả năng phát hiện đúng gian lận, số trường hợp bị bỏ sót và sự đánh đổi giữa Recall với Precision.
 
-* **Databricks** (Serverless Spark)
-* **Apache Spark 3.x** (distributed data processing)
+![Dashboard đánh giá hiệu suất mô hình dự báo gian lận](Dashboards/Fraud_Prediction_Result.png)
 
-**Programming & Libraries**
+*Dashboard Fraud Prediction Result trình bày kết quả của Logistic Regression, Random Forest và GBTClassifier được tính toán trong notebook Python. Trong bối cảnh gian lận chỉ chiếm khoảng 0.15% dữ liệu, Recall và PR-AUC có ý nghĩa đánh giá lớn hơn Accuracy.*
 
-* **Python 3.x** (pandas, NumPy, scikit-learn)
-* **PySpark ML** (Pipeline, VectorAssembler, StandardScaler, StringIndexer, OneHotEncoder)
-* **ML Algorithms:** Logistic Regression, Random Forest, GBTClassifier
-* **Evaluation:** BinaryClassificationEvaluator, confusion matrix, Precision, Recall, F1-Score
-* **Visualization:** Matplotlib, Seaborn
+### 6.1. So sánh hiệu suất
 
-**Data Source & Storage**
+| Mô hình | ROC-AUC | PR-AUC | Accuracy | Precision | Recall | F1-score |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| Logistic Regression | 0.8444 | 0.0213 | 99.85% | 28.97% | 0.29% | 0.58% |
+| Random Forest | 0.8934 | 0.0927 | 99.85% | **98.91%** | 2.56% | 5.00% |
+| **GBTClassifier** | **0.9427** | **0.2748** | **99.87%** | 94.54% | **11.42%** | **20.38%** |
 
-* **Kaggle:** [Financial Transactions Dataset](https://www.kaggle.com/datasets/computingvictor/transactions-fraud-datasets)
-* **Google BigQuery:** Used to store and access the imported Kaggle dataset
+### 6.2. Khả năng phát hiện gian lận
 
+| Mô hình | Gian lận phát hiện đúng (TP) | Gian lận bỏ sót (FN) | Cảnh báo sai (FP) | Tổng số giao dịch gian lận trong tập đánh giá |
+| --- | ---: | ---: | ---: | ---: |
+| Logistic Regression | 31 | 10,581 | 76 | 10,612 |
+| Random Forest | 272 | 10,340 | **3** | 10,612 |
+| **GBTClassifier** | **1,212** | **9,400** | 70 | 10,612 |
 
----
+### 6.3. Mô hình được lựa chọn
 
-## 📂 Project Structure
+**GBTClassifier được lựa chọn là mô hình ứng viên tốt nhất trong phạm vi dự án** vì:
 
-```
-Banking-Transaction-Analysis/
-│
-├── README.md
-├── banking_transaction_analytics.ipynb
-├── banking_transaction_dashboard.pbix
-│
-└── Data Tables
-    ├── transactions_data          # 13.3M transaction records
-    ├── users_data                 # 2K customer profiles
-    ├── cards_data                 # 6.1K card records
-    └── train_fraud_labels         # Fraud labels (supervised targets)
-```
+- Có ROC-AUC và PR-AUC cao nhất trong ba mô hình.
+- Phát hiện được nhiều giao dịch gian lận nhất tại ngưỡng mặc định.
+- Duy trì Precision cao, qua đó hạn chế số lượng cảnh báo sai.
+- Có khả năng nhận diện các quan hệ phi tuyến và tương tác phức tạp giữa các đặc trưng.
 
----
+Kết quả cho thấy GBT có năng lực xếp hạng rủi ro tốt, nhưng Recall **11.42%** đồng nghĩa mô hình vẫn bỏ sót phần lớn giao dịch gian lận tại ngưỡng phân loại hiện tại. Do đó, giá trị phù hợp nhất của mô hình ở giai đoạn này là **công cụ xếp hạng và ưu tiên cảnh báo**, thay vì cơ chế quyết định tự động.
 
-## 🔮 Future Enhancements
+### 6.4. So sánh khả năng ứng dụng của 3 mô hình
 
-### **1. Advanced Modeling**
-
-* Explore **advanced ML, deep learning, and ensemble models** to capture more complex fraud patterns.
-* Benchmark different approaches against **established fraud detection research**.
-
-### **2. Feature Expansion**
-
-* Add **transaction velocity, spending deviation, sequential behavior, merchant, location, and temporal features**.
-* Identify additional predictive variables by reviewing **established fraud detection studies**.
-
-### **3. Data Preparation & Imbalance Handling**
-
-* Evaluate alternative **scaling and transformation methods** for highly skewed features.
-* Explore **cost-sensitive learning, SMOTE, ADASYN, and other imbalance-handling techniques**.
-
-### **4. Real-Time Fraud Monitoring**
-
-* Develop a **real-time transaction monitoring system** with continuous fraud risk scoring.
-* Generate **automated alerts** for high-risk transactions and support continuous customer behavior monitoring.
-
-### **5. Explainable AI & Further Research**
-
-* Apply **SHAP** to identify the most influential factors behind fraud predictions.
-* Use these findings to develop **new behavioral features** and identify potential directions for further fraud-risk research.
+| Mô hình | Điểm mạnh | Hạn chế chính | Vai trò phù hợp |
+| --- | --- | --- | --- |
+| Logistic Regression | Dễ giải thích, tốc độ nhanh | Recall rất thấp | Mô hình nền và đối chiếu |
+| Random Forest | Precision cao nhất, rất ít cảnh báo sai | Bỏ sót phần lớn gian lận | Kịch bản ưu tiên độ chính xác của cảnh báo |
+| GBTClassifier | Khả năng phân biệt và Recall tốt nhất | Recall vẫn thấp ở ngưỡng mặc định | Mô hình ứng viên để tối ưu và thử nghiệm tiếp |
 
 ---
 
-## 👤 Author
+## 7. Khuyến nghị
 
-**Nguyen Thi Ngoc Minh**  
-**GitHub:** https://github.com/ngocminh0123
+### 7.1. Ưu tiên giám sát theo mức độ rủi ro
 
+- Thiết lập cơ chế giám sát tăng cường đối với giao dịch trực tuyến và giao dịch giá trị cao.
+- Kết hợp giá trị giao dịch, phương thức thanh toán, thời điểm, đặc điểm khách hàng và lịch sử hành vi trong cùng một bộ quy tắc hoặc risk score.
+- Xây dựng các ngưỡng kiểm soát theo nhiều cấp độ: cho phép, xác thực bổ sung, chuyển điều tra hoặc tạm giữ để xem xét.
+
+### 7.2. Tăng cường kiểm soát đối với khách hàng và tài khoản mới
+
+- Áp dụng quy trình KYC và xác minh danh tính phù hợp với mức độ rủi ro.
+- Theo dõi hành vi trong giai đoạn đầu sau khi kích hoạt tài khoản hoặc thẻ.
+- So sánh giao dịch thực tế với hồ sơ và hành vi dự kiến của khách hàng.
+- Sử dụng phân khúc RFM như một tín hiệu bổ sung, không sử dụng như công cụ duy nhất để phân loại rủi ro gian lận.
+
+### 7.3. Tối ưu mô hình theo năng lực xử lý cảnh báo
+
+- Tối ưu classification threshold dựa trên Precision–Recall Curve và khẩu vị rủi ro của ngân hàng.
+- Đánh giá Recall tại một mức false-positive rate hoặc số lượng cảnh báo tối đa mà bộ phận điều tra có thể xử lý.
+- Áp dụng cost-sensitive learning để phản ánh chi phí khác nhau giữa gian lận bị bỏ sót và cảnh báo sai.
+- Bổ sung các đặc trưng như transaction velocity, độ lệch so với hành vi thông thường và chuỗi giao dịch liên tiếp.
+- Áp dụng SHAP hoặc kỹ thuật giải thích tương đương trước khi sử dụng kết quả mô hình trong quy trình ra quyết định.
+
+### 7.4. Thiết lập cơ chế quản trị mô hình
+
+Điều cần làm trước khi triển khai mô hình vào thực tế:
+
+- Kiểm định độc lập và phê duyệt mô hình theo khung Model Risk Management.
+- Back-testing trên dữ liệu ngoài mẫu và dữ liệu mới hơn.
+- Theo dõi data drift, concept drift, Recall, Precision, alert rate và tổn thất gian lận.
+- Quy định rõ chủ sở hữu mô hình, tần suất rà soát và ngưỡng kích hoạt tái huấn luyện.
+- Cơ chế human-in-the-loop đối với các quyết định có ảnh hưởng trực tiếp đến khách hàng.
+
+---
+
+## 8. Hạn chế 
+
+Các kết quả trong dự án cần được diễn giải trong phạm vi của bộ dữ liệu hiện có. Những hạn chế chính gồm:
+
+1. **Dữ liệu công khai và mang tính mô phỏng:** bộ dữ liệu phù hợp cho phân tích và thử nghiệm phương pháp nhưng không đại diện đầy đủ cho danh mục khách hàng, sản phẩm và quy trình vận hành của một ngân hàng cụ thể.
+2. **Giai đoạn dữ liệu đã cũ:** dữ liệu kết thúc vào năm 2019 nên chưa phản ánh đầy đủ các hình thức gian lận, công nghệ thanh toán và hành vi khách hàng mới hơn.
+3. **Mất cân bằng lớp nghiêm trọng:** gian lận chỉ chiếm khoảng 0.15%, khiến một số chỉ số như Accuracy có thể tạo cảm giác tích cực hơn thực tế.
+4. **Không phải toàn bộ giao dịch đều có nhãn:** tập giao dịch có nhãn dùng cho mô hình nhỏ hơn tổng tập giao dịch ban đầu; do đó, kết quả EDA toàn danh mục và kết quả mô hình có thể có mẫu số khác nhau.
+5. **Thiếu một số biến hành vi và xác thực:** dữ liệu chưa bao gồm đầy đủ device fingerprint, IP address, authentication result, chargeback lifecycle, lịch sử cảnh báo và kết quả điều tra.
+6. **Một số phân khúc có cỡ mẫu nhỏ:** tỷ lệ gian lận cao ở các nhóm giá trị hoặc thu nhập nhất định có thể biến động mạnh và cần được kiểm tra thêm trước khi chuyển thành chính sách.
+7. **Thông tin địa lý và lỗi giao dịch chưa hoàn chỉnh:** một số trường vị trí hoặc lỗi bị thiếu và phải được xử lý trong quá trình chuẩn bị dữ liệu.
+8. **Phân tích RFM chỉ phản ánh khách hàng có hoạt động:** kết quả phân khúc không đại diện cho toàn bộ hồ sơ khách hàng nếu một phần khách hàng không có giao dịch trong giai đoạn quan sát.
+9. **Yêu cầu bảo vệ dữ liệu:** dữ liệu thẻ phải được che giấu hoặc token hóa trong môi trường thực tế; các trường nhạy cảm không được đưa vào báo cáo, log hoặc quy trình mô hình nếu không có nhu cầu và quyền truy cập phù hợp.
+
+Các hạn chế trên không phủ nhận giá trị của kết quả phân tích, nhưng xác định rõ điều kiện để sử dụng kết quả một cách thận trọng và phù hợp với chuẩn quản trị rủi ro.
+
+---
+
+## 9. Công nghệ sử dụng
+
+**Nền tảng & Tính toán**
+
+- **Databricks** (Serverless Spark)
+- **Apache Spark 3.x** (xử lý dữ liệu phân tán)
+
+**Ngôn ngữ & Thư viện**
+
+- **Python 3.x** (pandas, NumPy, scikit-learn)
+- **PySpark ML** (Pipeline, VectorAssembler, StandardScaler, StringIndexer, OneHotEncoder)
+- **ML Algorithms:** Logistic Regression, Random Forest, GBTClassifier
+- **Evaluation:** BinaryClassificationEvaluator, confusion matrix, Precision, Recall, F1-Score
+- **Visualization:** Matplotlib, Seaborn
+
+**Nguồn dữ liệu & Lưu trữ**
+
+- **Kaggle:** [Financial Transactions Dataset](https://www.kaggle.com/datasets/computingvictor/transactions-fraud-datasets)
+- **Google BigQuery:** Lưu trữ và truy cập dataset Kaggle đã được import.
+
+**Trực quan hóa & Báo cáo**
+
+- **Microsoft Power BI:** Xây dựng dashboard tương tác phục vụ phân tích thực trạng gian lận, hành vi khách hàng, sản phẩm và kết quả mô hình.
+- **DAX:** Xây dựng measures và các chỉ số sử dụng trong Power BI.
+- **Markdown:** Trình bày tài liệu dự án và các kết quả phân tích trong README.
