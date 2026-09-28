@@ -21,9 +21,8 @@ In this context, the Chief Risk Officer (CRO) assigned the Risk Analyst to compl
 
 | File / folder | Description |
 | --- | --- |
-| [`README.md`](README.md) | Vietnamese project report and the default landing page on GitHub. |
-| [`README_en.md`](README_en.md) | English version of the project report. |
 | [`banking_transaction_analytics.ipynb`](banking_transaction_analytics.ipynb) | Python/PySpark notebook covering data cleaning, exploratory analysis, statistical testing, feature engineering, and Machine Learning. |
+| [`banking_transaction_dashboard.pbix`](banking_transaction_dashboard.pbix) | Power BI report visualizing the fraud landscape, customer behavior, RFM segments, product-level risks, and Machine Learning prediction results. |
 | [`requirements.txt`](requirements.txt) | Python libraries required to run the analytical environment. |
 
 ---
