@@ -19,7 +19,7 @@ Trong bối cảnh đó, CRO giao cho Risk Analyst thực hiện dự án với 
 
 ## 2. Các tệp chính trong dự án
 
-| Tệp / thư mục | Nội dung |
+| Tệp | Nội dung |
 | --- | --- |
 | [`banking_transaction_analytics.ipynb`](banking_transaction_analytics.ipynb) | Notebook Python/PySpark thực hiện làm sạch dữ liệu, phân tích khám phá, kiểm định, feature engineering và xây dựng mô hình Machine Learning. |
 | [`banking_transaction_dashboard.pbix`](banking_transaction_dashboard.pbix) | Báo cáo Power BI trực quan hóa thực trạng gian lận, hành vi khách hàng, phân khúc RFM, rủi ro theo sản phẩm và kết quả dự báo của các mô hình Machine Learning. |
