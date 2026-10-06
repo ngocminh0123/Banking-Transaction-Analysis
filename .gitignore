@@ -1,9 +1,6 @@
 # Environment variables
 .env
 
-# Power BI files
-*.pbix
-
 # Data files
 Data/
 
