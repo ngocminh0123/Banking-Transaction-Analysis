@@ -213,9 +213,10 @@ Ba mô hình được lựa chọn để đại diện cho các mức độ ph�
 - **GBTClassifier:** mô hình boosting, tối ưu tuần tự các cây quyết định để cải thiện khả năng phân loại.
 
 Các mô hình được so sánh trên nhiều chỉ số để phản ánh đồng thời khả năng phân biệt, khả năng phát hiện gian lận và chi phí cảnh báo sai.
+
 ---
 
-# 5. Phân tích thực trạng
+# 5. Trực quan hóa và phân tích thực trạng trên Power BI
 
 ## 5.1. Fraud Overview
 
@@ -323,5 +324,5 @@ Nắm được tư duy và quy trình triển khai một báo cáo từ đầu �
 
 - Biết cách xác định câu hỏi, mục tiêu, kết quả cần đạt và nguồn dữ liệu cần thiết để giải quyết một vấn đề kinh doanh.
 - Sử dụng PySpark trên Databricks để xử lý dữ liệu lớn với gần 10 triệu bản ghi; thực hiện xây dựng, đánh giá và so sánh các mô hình Machine Learning cho bài toán dự đoán gian lận trên dữ liệu mất cân bằng.
-- Kết nối và xử lý dữ liệu trên Power BI, xây dựng các chỉ số cần thiết và trực quan hóa dữ liệu để hỗ trợ việc phân tích, tìm ra các vấn đề và đưa ra nhận định từ báo cáo.
+- Kết nối và xử lý dữ liệu trên Power BI, xây dựng các chỉ số cần thiết (DAX Measures) và trực quan hóa dữ liệu để hỗ trợ việc phân tích, tìm ra các vấn đề và đưa ra nhận định từ báo cáo.
 - Có thêm hiểu biết về nghiệp vụ ngân hàng, đặc biệt trong lĩnh vực quản trị rủi ro, qua đó hiểu rõ hơn cách một Risk Analyst tiếp cận dữ liệu và hỗ trợ công việc quản trị rủi ro hằng ngày.
