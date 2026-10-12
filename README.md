@@ -34,7 +34,7 @@ Mục tiêu cuối cùng là chuyển từ:
 
 ---
 
-## 2. Kết quả kỳ vọng
+## 2. Kết quả cần trình bày
 
 | Câu hỏi của CRO | Kết quả trình bày |
 | --- | --- |
@@ -277,7 +277,7 @@ Phần phân tích thực trạng giúp xác định **fraud xảy ra ở đâu 
 
 > **Các đặc điểm này có đủ khả năng phân biệt giao dịch fraud và non-fraud để tạo tín hiệu đánh giá rủi ro hay không?**
 
-Quy trình xử lý dữ liệu, feature engineering, huấn luyện và đánh giá mô hình được thực hiện trong notebook [`banking_transaction_analytics.ipynb`](banking_transaction_analytics.ipynb) bằng ngôn ngữ lập trình Python với thư viện PySpark ML. Trang Fraud Prediction Result trong Power BI tổng hợp các kết quả từ notebook thành góc nhìn quản trị, tập trung vào khả năng phát hiện đúng gian lận và số trường hợp gian lận bị bỏ sót.
+Quy trình xử lý dữ liệu, feature engineering, huấn luyện và đánh giá mô hình được thực hiện trong notebook [`banking_transaction_analytics.ipynb`](banking_transaction_analytics.ipynb). Trang Fraud Prediction Result trong Power BI tổng hợp các kết quả từ notebook thành góc nhìn quản trị, tập trung vào khả năng phát hiện đúng gian lận và số trường hợp gian lận bị bỏ sót.
 
 ![Dashboard đánh giá hiệu suất mô hình dự báo gian lận](Dashboards/Fraud_Prediction_Result.png)
 
