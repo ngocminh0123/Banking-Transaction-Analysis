@@ -6,62 +6,33 @@
 
 ## 1. Bối cảnh kinh doanh
 
-Chuyển đổi số đang làm thay đổi cách ngân hàng cung cấp sản phẩm và thực hiện giao dịch. Khi quy mô khách hàng ngày càng lớn, các kênh giao dịch số ngày càng phổ biến và ngân hàng liên tục phát triển những sản phẩm, phương thức thanh toán mới nhằm tăng tính tiện lợi, tốc độ và bảo mật cho khách hàng.
+Không khó để bắt gặp trên báo chí và truyền hình những câu chuyện về các vụ lừa đảo chuyển tiền hoặc kẻ gian sử dụng thông tin thẻ của người khác để thực hiện giao dịch trái phép. Chỉ trong vài thao tác, tiền có thể bị chuyển đi mà chủ tài khoản không hề hay biết và việc thu hồi không phải lúc nào cũng dễ dàng.
 
-Tuy nhiên, cùng với sự phát triển đó, **bề mặt rủi ro cũng thay đổi**. Một phương thức hoặc công nghệ mới có thể an toàn và hiệu quả hơn phương thức cũ nhưng vẫn có khả năng xuất hiện những điểm yếu mà các đối tượng gian lận có thể khai thác.
+Khi phát hiện tiền trong tài khoản bị mất, khách hàng thường tìm đến ngân hàng để nhờ hỗ trợ. Tuy nhiên, không phải trường hợp nào ngân hàng cũng có thể giúp khách hàng thu hồi số tiền đã mất. Những sự việc như vậy không chỉ gây thiệt hại về tài sản mà còn ảnh hưởng đến niềm tin của khách hàng vào sự an toàn khi gửi tiền và sử dụng dịch vụ ngân hàng.
 
-Thực tế trong quá trình hoạt động, đã có ghi nhận một số trường hợp gian lận xảy ra làm ảnh hưởng đến khách hàng và uy tín của ngân hàng. Bên cạnh đó, ngân hàng còn phải dành nguồn lực để điều tra, xử lý và khắc phục các sự cố phát sinh.
+Trước thực trạng đó, trong một buổi trao đổi về tình hình gian lận tại ngân hàng, **Giám đốc Quản trị rủi ro (CRO)** đã chia sẻ những vấn đề ngân hàng đang gặp phải và giao cho tôi — một **Risk Analyst** — nhiệm vụ tìm hiểu sâu hơn về thực trạng gian lận:
 
-Điều này đặt ra hai yêu cầu cho hoạt động quản trị rủi ro:
+> **Dạo này ngân hàng thường xuyên tiếp nhận khách hàng đến yêu cầu hỗ trợ xử lý các sự cố liên quan đến giao dịch. Có người cần khóa thẻ bị thất lạc, có người yêu cầu tra soát giao dịch chuyển khoản nhầm, cũng có trường hợp bị lộ thông tin đăng nhập ứng dụng ngân hàng. Phần lớn số tiền bị mất không thể thu hồi và vụ việc phải chuyển cho cơ quan chức năng xử lý. Mỗi vụ như vậy đều gây hoảng loạn, ảnh hưởng đến uy tín và làm giảm niềm tin của khách hàng vào sự an toàn tại ngân hàng. Vì vậy, em giúp anh xây dựng dashboard trực quan thực trạng gian lận hiện nay và xác định gian lận đang tập trung ở phân khúc nào để anh nắm rõ tình hình trước đã nhé.**
 
-- **Phát hiện được nơi gian lận thường xảy ra** để tập trung giám sát vào các nhóm giao dịch, khách hàng, sản phẩm hoặc kênh có tín hiệu rủi ro cao hơn.
-- **Cải thiện khả năng dự báo** nếu phương pháp phân vùng và đánh giá rủi ro hiện tại chưa theo kịp sự thay đổi của hành vi giao dịch và công nghệ.
+Từ yêu cầu của Giám đốc Quản trị rủi ro, tôi chia thành các mục tiêu sau:
 
-Trước thực trạng đó, **Giám đốc quản trị rủi ro (CRO)** cần tìm hiểu:
-
-> **Thực trạng gian lận trong giao dịch ngân hàng hiện nay ra sao, gian lận đang tập trung ở đâu, những yếu tố nào có liên quan đến rủi ro gian lận, và liệu các tín hiệu này có thể được khai thác để chủ động đánh giá rủi ro của từng giao dịch hay không?**
-
-Để trả lời câu hỏi của Giám đốc quản trị rủi ro, cần tập trung vào các mục tiêu sau:
-
-1. Đánh giá quy mô và xu hướng gian lận theo thời gian, địa điểm và đặc điểm giao dịch
+1. Đánh giá quy mô và xu hướng gian lận theo thời gian và địa điểm giao dịch
 2. Xác định đặc điểm và hành vi khách hàng có liên quan đến gian lận để ưu tiên giám sát
 3. Xác định sản phẩm, phương thức và kênh giao dịch có mức độ gian lận đáng chú ý
 4. Đánh giá khả năng dự báo giao dịch gian lận từ các tín hiệu rủi ro và lựa chọn mô hình phù hợp để dự báo
 
-Mục tiêu cuối cùng là chuyển từ:
-
-> **Biết gian lận đã xảy ra ở đâu → biết nên ưu tiên giám sát ở đâu → đánh giá khả năng phát hiện rủi ro sớm hơn.**
-
 ---
 
-## 2. Kết quả cần trình bày
+## 2. Đầu ra kỳ vọng
 
-| Câu hỏi của CRO | Kết quả trình bày |
-| --- | --- |
-| **Fraud đang xảy ra như thế nào?** | Quy mô, tỷ lệ, xu hướng và các mẫu hình chính |
-| **Fraud tập trung ở đâu?** | Rủi ro theo thời gian, địa điểm, khách hàng và giao dịch |
-| **Nhóm nào cần chú ý hơn?** | Customer Behavior và RFM Segment |
-| **Sản phẩm/kênh nào đáng chú ý?** | Product Analysis |
-| **Có thể dự báo được rủi ro không?** | Kết quả dự báo của các mô hình ML |
-| **Mô hình nào phù hợp hơn?** | So sánh khả năng phát hiện, cảnh báo sai và ứng dụng thực tế |
+Để đáp ứng yêu cầu của Giám đốc Quản trị rủi ro, báo cáo được thiết kế thành hệ thống gồm 4 Dashboard liên kết theo luồng phân tích từ nhận diện thực trạng đến giải pháp khuyến nghị:
 
-### Các trang trình bày Power BI
-
-**01 — Fraud Overview**  
-Trả lời: *Fraud đang xảy ra ở đâu và khi nào?*
-
-**02 — Customer Behavior**  
-Trả lời: *Đặc điểm và hành vi khách hàng nào đáng chú ý?*
-
-**03 — RFM Segment**  
-Trả lời: *Fraud exposure nằm trong nhóm khách hàng nào?*
-
-**04 — Product Analysis**  
-Trả lời: *Sản phẩm và phương thức giao dịch nào cần chú ý?*
-
-**05 — Fraud Prediction Result**  
-Trả lời: *Có thể dùng dữ liệu để tạo tín hiệu đánh giá rủi ro giao dịch hay không?*
-
+| STT | Dashboard | Nội dung trình bày | Ý nghĩa |
+| :---: | :--- | :--- | :--- |
+| **01** | **Fraud Overview** (Tổng quan gian lận) | Trực quan hóa bức tranh tổng thể về quy mô, xu hướng gian lận theo thời gian, địa điểm và đặc điểm giao dịch | Nắm bắt tình hình gian lận, xác định thời điểm và khu vực có rủi ro đáng chú ý để định hướng giám sát|
+| **02** | **Fraud – Affected Customers** (Khách hàng bị ảnh hưởng bởi gian lận) | Phân tích tỷ lệ gian lận theo phân khúc RFM, độ tuổi và mức thu nhập của khách hàng | Nhận diện những nhóm khách hàng có tỷ lệ gian lận cao hơn mặt bằng chung để ưu tiên theo dõi và xây dựng biện pháp bảo vệ phù hợp |
+| **03** | **Fraud Rate by Banking Products** (Rủi ro theo sản phẩm và kênh giao dịch) | So sánh mức độ gian lận theo loại thẻ, thương hiệu thẻ, phương thức giao dịch và đặc điểm sử dụng thẻ | Xác định các sản phẩm, phương thức và kênh giao dịch có rủi ro đáng chú ý để xem xét tăng cường kiểm soát phù hợp |
+| **04** | **Fraud Prediction Result** (Kết quả dự đoán gian lận) | Đánh giá và so sánh hiệu quả nhận diện giao dịch gian lận của các mô hình học máy | Có cơ sở lựa chọn mô hình tiềm năng để tiếp tục đánh giá và phát triển giải pháp hỗ trợ phát hiện gian lận|
 ---
 
 ## 3. Dữ liệu
@@ -125,7 +96,7 @@ Trả lời: *Có thể dùng dữ liệu để tạo tín hiệu đánh giá r�
 | `year_pin_last_changed` | Năm thay đổi PIN gần nhất |
 | `card_on_dark_web` | Thông tin thẻ có bị phát tán trên dark web hay không |
 
-#### `train_fraud_labels.csv` — Nhãn gian lận
+#### `train_fraud_labels.json` — Nhãn gian lận
 
 | Cột | Mô tả |
 | --- | --- |
@@ -176,10 +147,10 @@ E["<b>ĐÁNH GIÁ MÔ HÌNH</b>
 
 F["<b>POWER BI DASHBOARD</b>
 
-• Tổng quan giao dịch
-• Hành vi khách hàng
-• Phân tích RFM
-• Phân tích gian lận"]
+• Tổng quan gian lận
+• Đối tượng gian lận
+• Phân khúc sản phẩm
+• Dự đoán gian lận"]
 
 G["<b>BUSINESS INSIGHTS</b>"]
 
@@ -200,9 +171,9 @@ A --> B --> C --> D --> E --> F --> G --> H
 
 - **Quy mô hoạt động:** số lượng và giá trị giao dịch theo thời gian, khách hàng, sản phẩm và kênh.
 - **Mức độ rủi ro:** tỷ lệ gian lận trong từng phân khúc.
-- **Phân khúc khách hàng RFM:** điểm RFM được sử dụng để phân nhóm khách hàng theo ba tiêu chí về thời gian (Recency), tần suất (Frequency) và lượng tiền giao dịch (Monetary); Các phân khúc gồm có: Champions, Loyal, New Customers, Potential Loyalists, Need Attention, Cannot Lose Them và Lost Customers.
-- **Phân khúc dữ liệu giao dịch theo sản phẩm**: lượng tiền giao dịch, số giao dịch và số khách hàng theo từng sản phẩm về các loại thẻ, hãng thẻ, phương thức giao dịch được sử dụng 
--**Phân tích tương quan**: xác định các biến ảnh hưởng để đưa vào mô hình dự báo rủi ro gian lận
+- **Phân khúc khách hàng RFM:** điểm RFM được sử dụng để phân nhóm khách hàng theo ba tiêu chí về thời gian (Recency), tần suất (Frequency) và lượng tiền giao dịch (Monetary); các phân khúc gồm có: Champions, Loyal, New Customers, Potential Loyalists, Need Attention, Cannot Lose Them và Lost Customers.
+- **Phân khúc dữ liệu giao dịch theo sản phẩm:** Chia nhóm lượng tiền giao dịch, số giao dịch, số khách hàng và tỷ lệ gian lận theo từng sản phẩm về các loại thẻ, hãng thẻ, phương thức giao dịch được sử dụng.
+- **Phân tích tương quan:** xác định các biến ảnh hưởng để đưa vào mô hình dự báo rủi ro gian lận.
 
 ### 4.3. Xây dựng và đánh giá mô hình
 
@@ -216,62 +187,65 @@ Các mô hình được so sánh trên nhiều chỉ số để phản ánh đ�
 
 ---
 
-# 5. Trực quan hóa và phân tích thực trạng trên Power BI
+## 5. Trực quan hóa và phân tích thực trạng trên Power BI
 
-## 5.1. Fraud Overview
+### 5.1. Fraud Overview (Tổng quan gian lận)
 
 ![Dashboard tổng quan giao dịch và gian lận](Dashboards/Fraud_Overview.png)
 
-Dashboard Overview ghi nhận **8.91 triệu giao dịch**, **13,332 giao dịch gian lận**, tỷ lệ gian lận **0.15%** và tổng giá trị gian lận khoảng **$1.47 triệu** trong giai đoạn 2010–2019.
+Dữ liệu ghi nhận **8.91 triệu giao dịch**, **13,332 giao dịch gian lận**, tỷ lệ gian lận **0.15%** và tổng giá trị gian lận khoảng **$1.47 triệu** trong giai đoạn 2010–2019.
 
-Các phát hiện chính:
-
-- Số lượng giao dịch có xu hướng tăng trong giai đoạn đầu và duy trì ở mức tương đối ổn định trong các năm sau đó; tỷ lệ gian lận biến động mạnh hơn và đạt mức cao nhất vào năm **2016** (0.53%).
-- Tỷ lệ gian lận tăng rõ rệt ở các giao dịch có giá trị lớn, đặc biệt từ **$2,000 trở lên** (12.79%).
-- Gian lận tập trung nhiều trong khoảng **09:00–16:00**, đặc biệt vào Chủ nhật.
-- Phần lớn các trường hợp gian lận được ghi nhận tại khu vực **Bắc Mỹ**.
-
-**Đề xuất:** ngân hàng nên ưu tiên giám sát giao dịch giá trị cao và các khung thời gian có mức độ tập trung gian lận đáng chú ý. Các tín hiệu này cần được kết hợp với hồ sơ khách hàng, sản phẩm và kênh giao dịch thay vì sử dụng như điều kiện từ chối độc lập.
+- **Xu hướng chuỗi thời gian (2010–2019):**
+  - Số lượng giao dịch tăng trưởng đều trong giai đoạn 2010–2015 và bắt đầu đi vào quỹ đạo ổn định từ 2016 trở đi, cho thấy quy mô tệp khách hàng của ngân hàng đã qua giai đoạn mở rộng nhanh và đạt độ bão hòa.
+  - Tỷ lệ gian lận (*Fraud Rate*) biến động mạnh và lập đỉnh vào năm **2016 (0.53%)**. Xu hướng rủi ro cho thấy chu kỳ biến động khoảng 2 năm/lần: sau các đợt bùng nổ tấn công gian lận quy mô lớn, tỷ lệ rủi ro hạ nhiệt ở năm kế tiếp khi người dùng nâng cao cảnh giác, nhưng sau đó lại có xu hướng tăng trở lại khi kẻ gian thay đổi thủ đoạn tinh vi hơn.
+- **Phân bổ theo giá trị giao dịch:**
+  - Tỷ lệ gian lận tăng đột biến ở các giao dịch có giá trị lớn, đặc biệt từ **$2,000 trở lên (12.79%)**, dù số lượng các giao dịch này chiếm tỷ trọng nhỏ. Điều này đồng nghĩa với việc thiệt hại tài chính trên mỗi vụ gian lận là rất lớn.
+- **Phân bố địa lý (Merchant Location):**
+  - Gian lận tập trung phần lớn tại khu vực **Bắc Mỹ** (đặc biệt là các bang ven biển phía Đông Nam) và rải rác một số khu vực thương mại lớn tại **Châu Âu**. Đây là những thị trường phát triển, có mật độ giao dịch thẻ và thanh toán kỹ thuật số dày đặc, khiến mức độ phơi nhiễm rủi ro cao hơn.
+- **Ma trận thời gian:**
+  - Rủi ro gian lận phân bổ mạnh vào khung giờ ban ngày **09:00 – 16:00, đặc biệt tăng cao đột biến vào Chủ Nhật**. Bên cạnh đó, biểu đồ nhiệt cũng ghi nhận các điểm rủi ro xuất hiện vào khung giờ đêm muộn đến sáng sớm (**03:00 – 05:00**).
+  - *Giả thiết lý giải hành vi:* Các giao dịch gian lận tập trung vào ban ngày có thể xuất phát từ việc kẻ gian lợi dụng lúc khách hàng bận rộn để tạo áp lực, yêu cầu chuyển tiền gấp hoặc giả danh cơ quan chức năng nhằm khiến nạn nhân mất cảnh giác; trong khi đó, vào đêm muộn và sáng sớm, khách hàng dễ mất cảnh giác, chậm nhận ra dấu hiệu lừa đảo. Riêng cuối tuần, việc vui chơi, mua sắm có thể làm tăng nguy cơ thất lạc thẻ hoặc sơ suất khi giao dịch.
 
 ---
 
-## 5.2. Customer Behavior
+### 5.2. Fraud - Affected Customers (Nhóm khách hàng bị ảnh hưởng bởi hành vi gian lận)
 
 ![Dashboard phân tích hành vi và rủi ro gian lận theo khách hàng](Dashboards/Customer_Fraud_Behavior.png)
 
-Dashboard Customer Behavior phân tích **1,219 khách hàng có hoạt động trên tổng số 2,000 khách hàng**, đồng thời đối chiếu quy mô giao dịch và tỷ lệ gian lận theo phân khúc RFM, nhóm tuổi, thời điểm và giá trị giao dịch.
+Dữ liệu gồm **1,219 khách hàng có hoạt động trên tổng số 2,000 khách hàng**, đồng thời đối chiếu quy mô giao dịch và tỷ lệ gian lận theo phân khúc RFM, nhóm tuổi, thời điểm và giá trị giao dịch.
 
-Các phát hiện chính:
+- **Phân khúc RFM:** Tệp khách hàng được chia làm 4 nhóm chính: **nhóm khách hàng tiềm năng** (New Customers, Potential Loyalist, Promising) chiếm 42.49% số khách hàng hoạt động, tiếp theo là **nhóm VIP** (Champions, Loyal) với 32.81%, **nhóm có nguy cơ rời bỏ** (Cannot Lose Them, Lost Customers, Need Attention) với 16.65% và các **nhóm còn lại** (Others) với 8.04%. Trong đó:
 
-- Nhóm khách hàng tiềm năng (New Customers, Protential Loyalist, Promising) chiếm **42.49%** số khách hàng hoạt động, tiếp theo là nhóm VIP (Champions, Loyal) với **32.81%**, nhóm có nguy cơ rời bỏ (Cannot Lose Them, Lost Customers, Need Attention) với **16.65%** và các nhóm còn lại (Others) với **8.04%**.
-- **New Customers** có tỷ lệ gian lận cao nhất trong các phân khúc RFM, khoảng **0.31%**; Champions và Cannot Lose Them có tỷ lệ thấp nhất, khoảng **0.10%**.
-- Nhóm khách hàng từ **56 tuổi trở lên** ghi nhận tỷ lệ gian lận khoảng **0.17%**, cao hơn một số nhóm tuổi còn lại.
-- Nhóm khách hàng có thu nhập khoảng **$100–1,000** ghi nhận mức độ rủi ro cao nhất **(0.63%)** so với các nhóm thu nhập còn lại trong dữ liệu quan sát.
+  - **New Customers (Khách hàng mới):** Ghi nhận tỷ lệ gian lận cao nhất toàn hệ thống (**0.31%**, gấp 3 lần khách hàng Champions). Nguyên nhân có thể đến từ rủi ro kẻ gian dùng giấy tờ giả mạo mở thẻ để trục lợi và việc người dùng mới chưa hình thành thói quen bảo mật thông tin thẻ/tài khoản.
 
-**Đề xuất:** khách hàng mới nên được tăng cường giám sát trong giai đoạn đầu của quan hệ khách hàng. Tuổi, thu nhập hoặc phân khúc RFM chỉ nên được sử dụng như tín hiệu bổ sung trong một cơ chế đánh giá đa yếu tố.
+  - **Lost Customers (Khách hàng rời bỏ):** Có tỷ lệ gian lận cao thứ hai (**0.24%**). Một tỷ lệ lớn khách hàng rời bỏ dịch vụ có thể xuất phát từ việc họ từng là nạn nhân của các vụ lừa đảo gian lận tài chính, dẫn đến việc họ mất niềm tin vào tính an toàn của ngân hàng.
+
+- **Nhóm tuổi:**
+  - Nhóm khách hàng từ **56 tuổi trở lên** chiếm tới hơn **40%** lượng khách hàng hoạt động và có tỷ lệ gian lận lên tới **0.17%** (cao nhất trong các nhóm tuổi). Đây là nhóm khách hàng cốt lõi nhưng lại là mục tiêu hàng đầu của các chiêu trò tấn công lừa đảo do hạn chế hơn về kỹ năng nhận diện thủ đoạn công nghệ.
+
+- **Mức thu nhập hàng năm (Yearly Income):**
+  - Nhóm có thu nhập rất thấp (**$100 – $1,000**) ghi nhận tỷ lệ rủi ro đột biến (**0.63%**, gấp 4-5 lần mức bình quân). Đây phần lớn là nhóm học sinh, sinh viên, người chưa có việc làm ổn định, có thể có ít kinh nghiệm sử dụng dịch vụ tài chính nên dễ trở thành đối tượng bị lừa đảo.
 
 ---
 
-## 5.3. Product Analysis
+### 5.3. Fraud Rate by Banking Products (Rủi ro theo Sản phẩm & Kênh Giao dịch)
 
 ![Dashboard phân tích rủi ro theo sản phẩm và kênh giao dịch](Dashboards/Product_Analysis.png)
 
-Dashboard Product Analysis phân tích **4,070 thẻ hoạt động trên tổng số 6,146 thẻ** và mức độ rủi ro theo loại thẻ, thương hiệu thẻ, phương thức giao dịch và số lượng thẻ khách hàng sở hữu.
+Dữ liệu bao gồm **4,070 thẻ hoạt động trên tổng số 6,146 thẻ** và mức độ rủi ro theo loại thẻ, thương hiệu thẻ, phương thức giao dịch và số lượng thẻ khách hàng sở hữu.
 
-Các phát hiện chính:
-
-- Thẻ Debit chiếm tỷ trọng lớn nhất trong danh mục, tiếp theo là Credit và Debit (Prepaid).
-- Debit (Prepaid) có tỷ lệ gian lận cao nhất giữa các loại thẻ, khoảng **0.22%**.
-- Mastercard là thương hiệu thẻ được sử dụng nhiều nhất, tiếp theo là Visa, Amex và Discover.
-- Discover có tỷ lệ gian lận cao nhất giữa các thương hiệu thẻ, khoảng **0.21%**.
-- Giao dịch Online có tỷ lệ gian lận **0.84%**, cao hơn giao dịch Chip (**0.10%**) và Swipe (**0.03%**), mặc dù có số lượng giao dịch thấp nhất trong ba phương thức.
-- Khách hàng sở hữu ba thẻ có tỷ lệ gian lận khoảng **0.19%**, cao hơn nhóm sở hữu một hoặc hai thẻ.
-
-**Đề xuất:** giao dịch Online, thẻ trả trước và một số thương hiệu thẻ có mức độ rủi ro cao hơn cần được ưu tiên trong thiết kế rule và cơ chế xác thực bổ sung. Quyết định kiểm soát cần xem xét đồng thời tỷ lệ gian lận và quy mô giao dịch của từng nhóm.
+- **Trung bình số thẻ sở hữu của từng khách hàng:**
+  - Tỷ lệ thẻ bình quân ghi nhận **3.34 thẻ/khách hàng hoạt động**. Tuy nhiên, phân tích sâu về cơ cấu giao dịch cho thấy có sự chênh lệch: hơn **99%** khách hàng chỉ thường xuyên sử dụng 1–2 thẻ, nhóm khách hàng giao dịch từ 3 thẻ trở lên chỉ chiếm **0.88%** nhưng lại có tỷ lệ gian lận cao nhất (**0.19%**). Điều này phản ánh việc sở hữu dàn trải quá nhiều thẻ làm tăng nguy cơ thất lạc thông tin thẻ hoặc lơ là trong việc giám sát biến động số dư.
+- **Loại thẻ (Card Type):**
+  - Thẻ **Debit (Prepaid)** chiếm tỷ trọng giao dịch nhỏ nhất (khoảng 8.87%) nhưng lại có tỷ lệ gian lận cao nhất danh mục (**0.22%**). Do thẻ trả trước không liên kết trực tiếp với tài khoản ngân hàng và thường có quy trình định danh lỏng lẻo hơn, tạo cơ hội cho kẻ gian lợi dụng lỗ hổng bảo mật để thay đổi số dư hoặc hạn mức rút tiền. Bên cạnh đó, việc thiếu thông tin định danh và dữ liệu lịch sử giao dịch có thể gây khó khăn cho quá trình giám sát, nhận diện các hành vi bất thường.
+- **Hãng thẻ (Card Brand):**
+  - **Discover** chiếm thị phần giao dịch rất nhỏ (chưa tới 3%) nhưng lại có tỷ lệ gian lận cao nhất (**0.21%**), vượt qua Visa và Mastercard (đều ở mức 0.15%). Điều này cho thấy hệ thống bảo mật và cơ chế chống gian lận ở các mạng lưới thanh toán nhỏ hơn có thể chưa được đầu tư tối ưu bằng các hãng thẻ toàn cầu.
+- **Phương thức giao dịch (Transaction Channel):**
+  - Giao dịch Online có tỷ lệ gian lận cao nhất, đạt **0,84%**, gấp 8 lần Chip **(0,10%)** và 28 lần Swipe **(0,03%)**, dù chỉ chiếm khoảng **11,7%** tổng số giao dịch. Kênh Online có thể bị lợi dụng khi thông tin giao dịch bị đánh cắp qua website giả mạo, các thủ đoạn lừa đảo hoặc rò rỉ dữ liệu, tạo điều kiện cho kẻ gian thực hiện giao dịch trái phép từ xa.
 
 ---
 
-# 6. Kết quả mô hình dự báo gian lận
+## 6. Kết quả mô hình dự báo gian lận
 
 Phần phân tích thực trạng giúp xác định **fraud xảy ra ở đâu và những đặc điểm nào có liên quan**. Bước tiếp theo là kiểm tra:
 
@@ -303,24 +277,33 @@ Tuy nhiên, Recall **11.42%** cho thấy mô hình vẫn bỏ sót phần lớn 
 
 ---
 
-# 7. Khuyến nghị
+## 7. Đề xuất dựa trên dữ liệu
 
-Các phát hiện được chuyển thành ba nhóm khuyến nghị giám sát:
+### Kiểm soát các giao dịch bất thường
 
-### 01 — Giám sát giao dịch
-Tăng cường giám sát đối với giao dịch có giá trị cao, giao dịch Online và các khung thời gian có mức độ fraud đáng chú ý.
+- Yêu cầu xác minh thêm cho các giao dịch có giá trị lớn bất thường so với lịch sử của khách hàng.
+- Tăng cường giám sát vào những khung giờ và ngày có dấu hiệu rủi ro, đồng thời theo dõi tần suất giao dịch và biến động số dư để phát hiện hành vi bất thường.
+- Tăng cường xác minh khi các giao dịch phát sinh tại địa điểm khác biệt so với thói quen thường ngày của khách hàng.
 
-### 02 — Giám sát nhóm khách hàng rủi ro cao
-Theo dõi chặt hơn khách hàng mới và sử dụng hành vi, hồ sơ và RFM như các tín hiệu bổ sung trong đánh giá rủi ro đa yếu tố.
+### Tăng cường bảo vệ khách hàng
 
-### 03 — Giám sát khách hàng sử dụng các sản phẩm ít phổ biến
-Các sản phẩm và phương thức giao dịch như thẻ Debit (Prepaid), thẻ Discover, giao dịch Online và nhóm khách hàng sở hữu từ 3 thẻ trở lên có tỷ trọng giao dịch thấp nhưng lại ghi nhận mức độ rủi ro gian lận cao hơn so với các phân khúc còn lại.
+- Cải thiện các hình thức xác minh định danh khách hàng mới đăng ký dịch vụ để hạn chế giả mạo, đồng thời hướng dẫn khách mới cách sử dụng và bảo mật tài khoản. 
+- Thường xuyên gửi tin nhắn cập nhật các thủ đoạn lừa đảo mới, đặc biệt đến khách hàng lớn tuổi.
+
+### Tăng cường giám sát theo sản phẩm và kênh giao dịch
+
+- Bổ sung bước xác thực đối với các giao dịch Online có dấu hiệu đáng ngờ.
+- Rà soát các giao dịch sử dụng thẻ Debit (Prepaid) và Discover để xác định những điểm còn hạn chế trong quy trình bảo mật, từ đó bổ sung các biện pháp bảo vệ hoặc thêm các bước xác minh khách hàng.
+- Khuyến khích khách hàng khóa các thẻ ít sử dụng hoặc không còn nhu cầu sử dụng để hạn chế nguy cơ bị đánh cắp thông tin và phát sinh giao dịch trái phép.
+
+### Ứng dụng học máy trong dự báo gian lận
+
+- Có thể tận dụng mô hình học máy để hỗ trợ phát hiện và cảnh báo sớm các giao dịch đáng ngờ. Khi có thêm dữ liệu và cải thiện cách huấn luyện, mô hình có thể được nâng cấp để nhận diện gian lận chính xác hơn và hỗ trợ ngân hàng chủ động hơn trong công tác kiểm soát rủi ro.
 
 ---
+## 8. Giá trị cá nhân đạt được sau dự án
 
-# 8. Giá trị cá nhân đạt được sau dự án
-
-Nắm được tư duy và quy trình triển khai một báo cáo từ đầu đến cuối theo trình tự:
+Nắm vững tư duy và quy trình triển khai một báo cáo từ đầu đến cuối theo trình tự:
 
 - Biết cách xác định câu hỏi, mục tiêu, kết quả cần đạt và nguồn dữ liệu cần thiết để giải quyết một vấn đề kinh doanh.
 - Sử dụng PySpark trên Databricks để xử lý dữ liệu lớn với gần 10 triệu bản ghi; thực hiện xây dựng, đánh giá và so sánh các mô hình Machine Learning cho bài toán dự đoán gian lận trên dữ liệu mất cân bằng.
