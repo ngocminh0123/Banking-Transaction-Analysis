@@ -6,13 +6,11 @@
 
 ## 1. Business Context
 
-News headlines and television reports about wire transfer scams or stolen card credentials used for unauthorized transactions have become increasingly common. In just a few taps, funds can vanish from an account without the account holder's awareness, and recovery is rarely straightforward.
+During the most recent meeting with the Data Analytics team, the CRO expressed deep concern over banking transaction fraud schemes that are becoming increasingly sophisticated and difficult to detect. Recently, the number of customers coming to the bank to request support for related incidents has also escalated. Some were scammed into transferring money, others discovered suspicious transactions on their accounts, and several had their mobile banking credentials compromised. A substantial number of incidents were only detected after the money had already been transferred. At that point, recovering the funds is difficult, and in many cases, virtually impossible.
 
-Upon discovering missing funds, customers instinctively turn to the bank for assistance. However, banks cannot always recover lost money. Such incidents not only inflict direct financial losses on customers but also erode customer confidence in the safety and security of banking services.
+Facing this reality, the CRO emphasized that the bank must take a more proactive stance in fraud prevention. The bank needs to help customers recognize prevalent scam tactics, while continuously monitoring transactions to issue warnings or mandate step-up verification whenever anomalies arise. However, to target efforts effectively, the bank must first gain a clear understanding of the current fraud landscape: which customer segments fraud is concentrated in, and which products carry high risks. This is the exact task assigned to me by the CRO:
 
-In response to this growing challenge, during an internal meeting on banking fraud, the **Chief Risk Officer (CRO)** shared the urgent difficulties the bank was facing and tasked me — a **Risk Analyst** — with conducting an in-depth investigation into transaction fraud:
-
-> **"Lately, our branches and support centers have been receiving a surge of customer requests regarding transaction incidents. Some need lost cards blocked immediately, others file dispute requests for accidental transfers, and several have had their mobile banking credentials compromised. Most of the stolen funds cannot be recovered, forcing cases to be handed over to law enforcement. Each incident triggers panic, tarnishes our brand reputation, and undermines customer trust in our bank's security. Therefore, I need your help to build an intuitive dashboard illustrating the current fraud landscape and identifying which segments fraud is concentrated in, so we can get a firm grasp of the situation first."**
+> **Lately, our bank has frequently been receiving customers coming in for support regarding transaction incidents. Some need lost cards blocked, others request dispute investigations for accidental transfers, and several have had their mobile banking login credentials compromised. Most of the lost money cannot be recovered, requiring cases to be handed over to law enforcement. Each incident triggers panic, tarnishes our reputation, and undermines customer trust in the bank's security. Therefore, please help me build an intuitive dashboard illustrating the current fraud landscape and identifying which segments fraud is concentrated in, so I can get a firm grasp of the situation first.**
 
 Based on the CRO's mandate, I broke down the project into the following key objectives:
 
@@ -274,7 +272,7 @@ However, a Recall of **11.42%** indicates that the model still misses the vast m
 
 ---
 
-## 7. Data-Driven Recommendations
+## 7. Recommendations
 
 ### Monitoring Anomalous Transactions
 

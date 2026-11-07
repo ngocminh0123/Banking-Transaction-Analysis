@@ -1,3 +1,4 @@
+
 # Đánh giá rủi ro gian lận trong giao dịch ngân hàng
 
 [English](README_en.md) | **Tiếng Việt**
@@ -6,11 +7,9 @@
 
 ## 1. Bối cảnh kinh doanh
 
-Không khó để bắt gặp trên báo chí và truyền hình những câu chuyện về các vụ lừa đảo chuyển tiền hoặc kẻ gian sử dụng thông tin thẻ của người khác để thực hiện giao dịch trái phép. Chỉ trong vài thao tác, tiền có thể bị chuyển đi mà chủ tài khoản không hề hay biết và việc thu hồi không phải lúc nào cũng dễ dàng.
+Tại buổi họp gần nhất với phòng Phân tích dữ liệu, CRO đã bày tỏ lo ngại trước việc các hình thức gian lận trong giao dịch ngân hàng ngày càng tinh vi và khó nhận diện. Thời gian gần đây, số lượng khách hàng tìm đến ngân hàng để yêu cầu hỗ trợ xử lý các sự cố liên quan cũng tăng lên. Người thì bị lừa chuyển tiền, người phát hiện tài khoản có giao dịch lạ, có trường hợp lại bị lộ thông tin đăng nhập ứng dụng ngân hàng. Khá nhiều vụ chỉ được phát hiện sau khi tiền đã chuyển đi. Lúc đó muốn thu hồi cũng không dễ, nhiều trường hợp gần như không thể lấy lại được tiền.
 
-Khi phát hiện tiền trong tài khoản bị mất, khách hàng thường tìm đến ngân hàng để nhờ hỗ trợ. Tuy nhiên, không phải trường hợp nào ngân hàng cũng có thể giúp khách hàng thu hồi số tiền đã mất. Những sự việc như vậy không chỉ gây thiệt hại về tài sản mà còn ảnh hưởng đến niềm tin của khách hàng vào sự an toàn khi gửi tiền và sử dụng dịch vụ ngân hàng.
-
-Trước thực trạng đó, trong một buổi trao đổi về tình hình gian lận tại ngân hàng, **Giám đốc Quản trị rủi ro (CRO)** đã chia sẻ những vấn đề ngân hàng đang gặp phải và giao cho tôi — một **Risk Analyst** — nhiệm vụ tìm hiểu sâu hơn về thực trạng gian lận:
+Trước thực trạng đó, CRO cho rằng ngân hàng cần chủ động hơn trong việc phòng ngừa gian lận. Khi đó, ngân hàng cần giúp khách hàng nhận biết những hình thức lừa đảo thường gặp, đồng thời theo dõi giao dịch để cảnh báo hoặc yêu cầu xác thực thêm khi có dấu hiệu bất thường. Nhưng muốn làm đúng trọng tâm thì phải hiểu rõ tình hình gian lận hiện tại trước: gian lận đang tập trung ở nhóm khách hàng nào và sản phẩm nào có rủi ro cao. Đây cũng là phần việc CRO giao cho tôi:
 
 > **Dạo này ngân hàng thường xuyên tiếp nhận khách hàng đến yêu cầu hỗ trợ xử lý các sự cố liên quan đến giao dịch. Có người cần khóa thẻ bị thất lạc, có người yêu cầu tra soát giao dịch chuyển khoản nhầm, cũng có trường hợp bị lộ thông tin đăng nhập ứng dụng ngân hàng. Phần lớn số tiền bị mất không thể thu hồi và vụ việc phải chuyển cho cơ quan chức năng xử lý. Mỗi vụ như vậy đều gây hoảng loạn, ảnh hưởng đến uy tín và làm giảm niềm tin của khách hàng vào sự an toàn tại ngân hàng. Vì vậy, em giúp anh xây dựng dashboard trực quan thực trạng gian lận hiện nay và xác định gian lận đang tập trung ở phân khúc nào để anh nắm rõ tình hình trước đã nhé.**
 
@@ -251,9 +250,11 @@ Phần phân tích thực trạng giúp xác định **fraud xảy ra ở đâu 
 
 > **Các đặc điểm này có đủ khả năng phân biệt giao dịch fraud và non-fraud để tạo tín hiệu đánh giá rủi ro hay không?**
 
-Quy trình xử lý dữ liệu, feature engineering, huấn luyện và đánh giá mô hình được thực hiện trong notebook [`banking_transaction_analytics.ipynb`](banking_transaction_analytics.ipynb). Trang Fraud Prediction Result trong Power BI tổng hợp các kết quả từ notebook thành góc nhìn quản trị, tập trung vào khả năng phát hiện đúng gian lận và số trường hợp gian lận bị bỏ sót.
+Chi tiết về quy trình xử lý dữ liệu, feature engineering, huấn luyện và đánh giá mô hình được thực hiện trong notebook [`banking_transaction_analytics.ipynb`](banking_transaction_analytics.ipynb). Trang Fraud Prediction Result trong Power BI dưới đây tổng hợp các kết quả từ notebook:
 
 ![Dashboard đánh giá hiệu suất mô hình dự báo gian lận](Dashboards/Fraud_Prediction_Result.png)
+
+Cụ thể về kết quả dự đoán của các mô hình:
 
 ### So sánh hiệu suất
 
@@ -277,7 +278,7 @@ Tuy nhiên, Recall **11.42%** cho thấy mô hình vẫn bỏ sót phần lớn 
 
 ---
 
-## 7. Đề xuất dựa trên dữ liệu
+## 7. Đề xuất cải thiện thực trạng
 
 ### Kiểm soát các giao dịch bất thường
 
